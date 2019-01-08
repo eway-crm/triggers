@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="urn:eway:document-schemas:triggers-configuration"
+           xmlns="urn:eway:document-schemas:triggers-configuration">
+  <xsd:simpleType name="folderType">
+    <xsd:restriction base="xs:string">
+      <xsd:enumeration value="All" />
+      <xsd:enumeration value="Actions" />
+      <xsd:enumeration value="AdditionalFields" />
+      <xsd:enumeration value="Bonuses" />
+      <xsd:enumeration value="Calendar" />
+      <xsd:enumeration value="CapacityNotes" />
+      <xsd:enumeration value="CapacityNoteTypes" />
+      <xsd:enumeration value="Carts" />
+      <xsd:enumeration value="ColumnPermissions" />
+      <xsd:enumeration value="Companies" />
+      <xsd:enumeration value="Contacts" />
+      <xsd:enumeration value="CurrencyExchangeRates" />
+      <xsd:enumeration value="Documents" />
+      <xsd:enumeration value="Emails" />
+      <xsd:enumeration value="EnumTypes" />
+      <xsd:enumeration value="EnumValues" />
+      <xsd:enumeration value="EnumValuesRelations" />
+      <xsd:enumeration value="Features" />
+      <xsd:enumeration value="Flows" />
+      <xsd:enumeration value="GlobalSettings" />
+      <xsd:enumeration value="Goods" />
+      <xsd:enumeration value="GoodsInCart" />
+      <xsd:enumeration value="GoodsInSet" />
+      <xsd:enumeration value="Groups" />
+      <xsd:enumeration value="Holidays" />
+      <xsd:enumeration value="Children" />
+      <xsd:enumeration value="IndividualDiscounts" />
+      <xsd:enumeration value="InvoiceItems" />
+      <xsd:enumeration value="Invoices" />
+      <xsd:enumeration value="ItemCopyRelations" />
+      <xsd:enumeration value="Journal" />
+      <xsd:enumeration value="Knowledge" />
+      <xsd:enumeration value="Layouts" />
+      <xsd:enumeration value="LayoutsModels" />
+      <xsd:enumeration value="Leads" />
+      <xsd:enumeration value="Ledger" />
+      <xsd:enumeration value="Licences" />
+      <xsd:enumeration value="Marketing" />
+      <xsd:enumeration value="MarketingList" />
+      <xsd:enumeration value="MarketingListSources" />
+      <xsd:enumeration value="Models" />
+      <xsd:enumeration value="ModulePermissions" />
+      <xsd:enumeration value="ObjectTypesOptions" />
+      <xsd:enumeration value="Payments" />
+      <xsd:enumeration value="Prices" />
+      <xsd:enumeration value="PriceListGroup" />
+      <xsd:enumeration value="ProjectAssignments" />
+      <xsd:enumeration value="ProjectAssignmentsPerUserProject" />
+      <xsd:enumeration value="ProjectAssignmentsTotal" />
+      <xsd:enumeration value="ProjectAssignmentsTotalUserProject" />
+      <xsd:enumeration value="ProjectList" />
+      <xsd:enumeration value="Projects" />
+      <xsd:enumeration value="ProjectUsersInCaPlan" />
+      <xsd:enumeration value="RelationData" />
+      <xsd:enumeration value="Relations" />
+      <xsd:enumeration value="Releases" />
+      <xsd:enumeration value="Reports" />
+      <xsd:enumeration value="Responses" />
+      <xsd:enumeration value="RevisionsHistory" />
+      <xsd:enumeration value="Salaries" />
+      <xsd:enumeration value="SalePrices" />
+      <xsd:enumeration value="SqlObjects" />
+      <xsd:enumeration value="Tasks" />
+      <xsd:enumeration value="TeamRoles" />
+      <xsd:enumeration value="Templates" />
+      <xsd:enumeration value="Training" />
+      <xsd:enumeration value="Updates" />
+      <xsd:enumeration value="Users" />
+      <xsd:enumeration value="UserSettings" />
+      <xsd:enumeration value="Vacation" />
+      <xsd:enumeration value="WebAccess2Options" />
+      <xsd:enumeration value="WebAccessOptions" />
+      <xsd:enumeration value="WorkCommitments" />
+      <xsd:enumeration value="WorkflowHistory" />
+      <xsd:enumeration value="WorkReports" />
+      <xsd:enumeration value="WrongClientVersions" />
+      <xsd:enumeration value="XsltTransformations" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="sqlDbType">
+    <xsd:restriction base="xs:string">
+      <xsd:enumeration value="BigInt" />
+      <xsd:enumeration value="Binary" />
+      <xsd:enumeration value="Bit" />
+      <xsd:enumeration value="Char" />
+      <xsd:enumeration value="DateTime" />
+      <xsd:enumeration value="Decimal" />
+      <xsd:enumeration value="Float" />
+      <xsd:enumeration value="Image" />
+      <xsd:enumeration value="Int" />
+      <xsd:enumeration value="Money" />
+      <xsd:enumeration value="NChar" />
+      <xsd:enumeration value="NText" />
+      <xsd:enumeration value="NVarChar" />
+      <xsd:enumeration value="Real" />
+      <xsd:enumeration value="UniqueIdentifier" />
+      <xsd:enumeration value="SmallDateTime" />
+      <xsd:enumeration value="SmallInt" />
+      <xsd:enumeration value="SmallMoney" />
+      <xsd:enumeration value="Text" />
+      <xsd:enumeration value="Timestamp" />
+      <xsd:enumeration value="TinyInt" />
+      <xsd:enumeration value="VarBinary" />
+      <xsd:enumeration value="VarChar" />
+      <xsd:enumeration value="Variant" />
+      <xsd:enumeration value="Xml" />
+      <xsd:enumeration value="Udt" />
+      <xsd:enumeration value="Structured" />
+      <xsd:enumeration value="Date" />
+      <xsd:enumeration value="Time" />
+      <xsd:enumeration value="DateTime2" />
+      <xsd:enumeration value="DateTimeOffset" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="triggerWhen">
+    <xsd:restriction base="xs:string">
+      <xsd:enumeration value="BeforeSave">
+        <xsd:annotation>
+          <xsd:documentation>Triggered before item is saved.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AfterSave">
+        <xsd:annotation>
+          <xsd:documentation>Triggered after item is saved.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="BeforeRemove">
+        <xsd:annotation>
+          <xsd:documentation>Triggered before item is removed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AfterRemove">
+        <xsd:annotation>
+          <xsd:documentation>Triggered after item is removed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ScheduledAtTime">
+        <xsd:annotation>
+          <xsd:documentation>Triggered at specified time.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="BeforeSaveToRemote">
+        <xsd:annotation>
+          <xsd:documentation>Triggered when item is going to be saved to remote database.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SaveToOutlook">
+        <xsd:annotation>
+          <xsd:documentation>Triggered when item has been saved to Outlook.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SaveToLocal">
+        <xsd:annotation>
+          <xsd:documentation>Triggered when item has been saved to local database.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RemoveFromLocal">
+        <xsd:annotation>
+          <xsd:documentation>Triggered when item has been removed from local database.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="SaveToRemote">
+        <xsd:annotation>
+          <xsd:documentation>Triggered when item has been saved to remote database.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="DiscardChanges">
+        <xsd:annotation>
+          <xsd:documentation>Triggered when synchronization is trying to upload changes, but there is a conflict and user clicks on discard changes button.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Manually">
+        <xsd:annotation>
+          <xsd:documentation>Trigger manually by some custom code.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AfterTimerStart">
+        <xsd:annotation>
+          <xsd:documentation>Trigger/Job raises only once - just after the Timer loads the definitions.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="actionType">
+    <xsd:restriction base="xs:string">
+      <xsd:enumeration value="StoredProcedure">
+        <xsd:annotation>
+          <xsd:documentation>
+            Executes SQL stored procedure.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Class">
+        <xsd:annotation>
+          <xsd:documentation>Executes one Execute method in specified class. The class has to extend the WebServiceTriggerActionBase class. You have to specify the full class name and the assembly path in the Class XML element bellow this.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Executable">
+        <xsd:annotation>
+          <xsd:documentation>Executes the specified exe file with the arguments made from parameters. There parameters work like the sql procedure ones.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="executableWaitingType">
+    <xsd:restriction base="xs:string">
+      <xsd:enumeration value="WaitInTransaction">
+        <xsd:annotation>
+          <xsd:documentation>
+            The executable process will be launched inside th transaction repeater and we will also wait for its ending.
+            If a error occurs, the saving/removing transaction will fail like for example the SQL triggers do.
+            The saving/removing routine does not end before the trigger process finishes (Agent is blue until the work is done).
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="WaitOutsideTransaction">
+        <xsd:annotation>
+          <xsd:documentation>
+            The executable process will be launched inside th transaction repeater and its handle will be saved.
+            Later, after the transaction repeater finishes its work, the saving routine will wait for the process handle to end.
+            If an error occurs, the saving/removing transaction is already committed and the ReturnCode will not be affected.
+            An email will be however sent (like in queued jobs).
+            The saving/removing routine does not end before the trigger process finishes (Agent is blue until the work is done).
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NoWaiting">
+        <xsd:annotation>
+          <xsd:documentation>
+            The executable process will be launched inside th transaction repeater and the handle will not be stored.
+            If an error occurs, the saving/removing transaction is already committed and the ReturnCode will not be affected.
+            No email nor a log message is provided.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xs:simpleType name="storedProcedureName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="storedProcedureParameterName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="@[a-zA-Z0-9_]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xsd:element name="TriggersConfiguration">
+    <xsd:complexType>
+      <xsd:sequence minOccurs="0" maxOccurs="1">
+        <xsd:element name="Triggers">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element maxOccurs="unbounded" name="TriggerDefinition">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="DependsOnTrigger" type="xsd:string" minOccurs="0" maxOccurs="1">
+                      <xsd:annotation>
+                        <xsd:documentation>When multiple triggers are triggered at the same conditions this tag is used to specify order of the execution. DependsOnTrigger should contain a name of the trigger that should be executed before this trigger. This tag does not apply to Jobs.</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="Folder" type="folderType" />
+                    <xsd:element name="Action">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element minOccurs="0" name="Executable">
+                            <xsd:complexType mixed="true">
+                              <xsd:sequence minOccurs="0">
+                                <xsd:element name="Parameters">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element maxOccurs="unbounded" name="Parameter">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="SourceName" type="xsd:string" use="optional" />
+                                          <xsd:attribute name="NeedLoadSource" type="xsd:boolean" use="optional" />
+                                          <xsd:attribute name="SqlDbType" type="sqlDbType" use="required" />
+                                          <xsd:attribute name="Value" type="xsd:string" use="optional" />
+                                          <xsd:attribute name="UsePreviousValue" type="xsd:boolean" use="optional" />
+                                          <xsd:attribute name="UseCurrentFolder" type="xsd:boolean" use="optional" />
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Target" type="xs:string" use="required" />
+                              <xsd:attribute name="WaitingType" type="executableWaitingType" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element minOccurs="0" name="Class">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element minOccurs="0" maxOccurs="1" name="Parameters">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ClassActionParameter">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="Name" type="xsd:string" use="required" />
+                                          <xsd:attribute name="Value" type="xsd:string" use="required" />
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Name" type="xsd:string" use="required" />
+                              <xsd:attribute name="Assembly" type="xsd:string" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element minOccurs="0" name="StoredProcedures">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="StoredProcedure">
+                                  <xsd:complexType mixed="true">
+                                    <xsd:sequence minOccurs="0">
+                                      <xsd:element name="Parameters">
+                                        <xsd:complexType>
+                                          <xsd:sequence>
+                                            <xsd:element maxOccurs="unbounded" name="StoredProcedureParameter">
+                                              <xsd:complexType>
+                                                <xsd:attribute name="SourceName" type="xsd:string" use="optional" />
+                                                <xsd:attribute name="Name" type="storedProcedureParameterName" use="required" />
+                                                <xsd:attribute name="NeedLoadSource" type="xsd:boolean" use="optional" />
+                                                <xsd:attribute name="SqlDbType" type="sqlDbType" use="required" />
+                                                <xsd:attribute name="Value" type="xsd:string" use="optional" />
+                                                <xsd:attribute name="UsePreviousValue" type="xsd:boolean" use="optional" />
+                                                <xsd:attribute name="UseCurrentFolder" type="xsd:boolean" use="optional" />
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:sequence>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="Name" type="storedProcedureName" use="required" />
+                                    <xsd:attribute name="CommandTimeout" type="xsd:int" use="optional" />
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element minOccurs="0" name="Criterias">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="ActionCriteria">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Name" type="xsd:string" use="required" />
+                                    <xsd:attribute name="Value" type="xsd:string" />
+                                    <xsd:attribute name="Operator" use="optional" default="Equals">
+                                      <xsd:simpleType>
+                                        <xsd:restriction base="xs:string">
+                                          <xsd:enumeration value="Equals" />
+                                          <xsd:enumeration value="EqualsFolderName" />
+                                          <xsd:enumeration value="NotEquals" />
+                                          <xsd:enumeration value="StartsWith" />
+                                          <xsd:enumeration value="IsChanged" />
+                                        </xsd:restriction>
+                                      </xsd:simpleType>
+                                    </xsd:attribute>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Type" use="required" type="actionType" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="When" type="triggerWhen" use="required" />
+                  <xsd:attribute name="Active" type="xsd:boolean" use="required" />
+                  <xsd:attribute name="Name" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                      <xsd:documentation>Name of the trigger, is used by DependsOnTrigger tag.</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:attribute>
+                  <xsd:attribute name="EnableByGlobalSettingName" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                      <xsd:documentation>When a value of GlobalSetting specified in this attribute is 1 the trigger will execute.</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:attribute>
+                  <xsd:attribute name="DisableByGlobalSettingName" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                      <xsd:documentation>When a value of GlobalSetting specified in this attribute is 1 the trigger will not execute. This attribute is available from version 5.3.</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:attribute>
+                  <xsd:attribute name="IsCrucial" type="xsd:boolean" use="optional">
+                    <xsd:annotation>
+                      <xsd:documentation>Execution of the trigger (job) is crucial. This is used by eWayTimer to force execution on the start of the eWayTimer, when it was not running from the start of the day which might cause jobs not to be executed.</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:attribute>
+                  <xsd:attribute name="Queue" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                      <xsd:documentation>Jobs assigned to a queue are executed after the previous job from the samequeue finishes unless the queue name is Default, which is the default one.</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:attribute>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>

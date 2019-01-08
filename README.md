@@ -1,2 +1,2 @@
-# eway-crm-xsd
-XSD files for eWay-CRM
+# eWay-CRM XSD files
+XSD files for [eWay-CRM](http://www.eway-crm.com).
