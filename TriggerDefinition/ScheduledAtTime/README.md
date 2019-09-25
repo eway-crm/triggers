@@ -1,4 +1,5 @@
 
+
 # ScheduledAtTime
 "ScheduledAtTime" trigger will activate at a specific time.
 ```xml
@@ -20,5 +21,25 @@
   </Triggers>
 </TriggersConfiguration>
 ```
-In this example we can see that the trigger definition is set to `When="ScheduledAtTime"`. That makes the trigger activate at specified time. The time is specified by action criteria. You define "Time" in h/m/s format in relation to midnight. Next you set "Repeat", that determines that your trigger will activate repeatedly. Here we have `Value="d"`, which means it will repeat every day.
-Next is "IterationCount". Iteration is number of times that the trigger will activate within the chosen "Repeat" period. And lastly "Frequency". That is time after which the next iteration will start. Acoarding to our example, this trigger will activate in 00:40 and will activate 23 times in a day, each activation 60 minutes after the last one.
+In this example we can see that the trigger definition is set to `When="ScheduledAtTime"`. That makes the trigger activate at specified time. The time is specified by action criteria.
+
+## Action criteria
+
+### Time
+ This criteria defines starting time for the trigger. The time format is h/m/s. The trigger will activate at the set time, relative to 00:00. Here we have this value set to 00:40:00 (40 minutes after midnight). That means, if you set the trigger to "active" at time 00:39, it will activate in the next minute. However if you set it to "active" at 00:41, it will activate after 23 hours and 59 minutes. Take notice, that the time which the trigger checks is time on your server.
+
+### Repeat
+Repeat determines your trigger will activate repeatedly. Here we have `Value="d"`, which means it will repeat every day. In this case each day at 0:40. This criteria can have following values:
+"d" for daily
+"wd" for daily but only on week days
+"w" for weekly
+"m" for monthly
+"y" for yearly
+
+### Iteration count
+Iteration is number of times that the trigger will activate within the chosen "Repeat" period. Its value is number, which should not be greater than how many times the specified frequency can fit into the repeat period. In this case the value is 23, so the trigger will activate each day  23 times . 
+ 
+### Frequency
+This is time after which the next iteration will start. It value is given in minutes. In this case we set it to 60, so the trigger will activate daily, 23 times after 60 minutes.
+
+Configuration in this example will work this way. Each day at 00:40 and than subsequently after 60 minutes again and again. This cycle will repeat every day and should ensure activating the specified executable/procedure each hour the trigger is active.
