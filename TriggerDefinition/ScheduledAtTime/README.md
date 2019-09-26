@@ -1,4 +1,5 @@
 
+
 # Job trigger example
 "ScheduledAtTime" trigger will activate at a specific time. Lets say you want to run Program.exe each hour, every day.
 
@@ -22,6 +23,9 @@
 </TriggersConfiguration>
 ```
 In this example we can see that the trigger definition is set to `When="ScheduledAtTime"`. That makes the trigger activate at specified time. The time is specified by action criteria.
+
+## What will be activated
+The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\Program.exe"`.
 
 ## Choosing time
 By defining action criterias we can create our own schedule for trigger activation
