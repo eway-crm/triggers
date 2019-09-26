@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TriggersConfiguration xmlns="urn:eway:document-schemas:triggers-configuration">
+    <Triggers>
+        <TriggerDefinition Active="true" When="AfterSave">
+            <Folder>Leads</Folder>
+            <Action Type="StoredProcedure">
+                <StoredProcedures>
+                    <StoredProcedure Name="TriggersExample_SendLeadNotification">
+                        <Parameters>
+                            <StoredProcedureParameter Name="@LeadFileAs" SourceName="FileAs" SqlDbType="NVarChar" />
+                        </Parameters>
+                    </StoredProcedure>
+                </StoredProcedures>
+                <Criterias>
+                  <ActionCriteria Name="OwnerGUID" Operator="Equals" Value="#SQL SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'user1'" />
+                </Criterias>
+            </Action>
+        </TriggerDefinition>
+    </Triggers>
+</TriggersConfiguration>
