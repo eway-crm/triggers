@@ -29,3 +29,7 @@ Click [here](ActionType/StoredProcedure/README.md) for example
 ### Executable
 "Executable" trigger will activate .exe file of your specification.
 Click [here](ActionType/Executable/README.md) for example
+
+## Folder names
+To ease understanding folder names, look [here](FolderNames.md).
+
