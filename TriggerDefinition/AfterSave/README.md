@@ -45,6 +45,7 @@ SqlDbType - Type of this parameter `SqlDbType="NVarChar"`
 
 ## Conditions
 By action criteria, we can also specify more conditions for the activation. We want to be notified in case of the Lead being saved by the chosen subordinate. We can achieve that with this condition:
+
 Name - Name of column on the current specified folder containing information we compare against `Name="OwnerGUID"`
 
 Operator - Operator on which we determine if the condition is fulfilled `Operator="Equals"`
