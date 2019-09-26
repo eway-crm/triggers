@@ -7,6 +7,7 @@ This page should give you insight for how triggers work, what you can do with th
 
 We have provided our XSD definition schema for download. If you do so, you can use it in visual studio to validate your trigger XML script. To link it, go to properties f chosen XML file and in "Schemas" choose our XSD file.
 ![properties](properties.PNG)
+
 Now you can start creating your trigger.
 
 ##  Choose when the trigger will be activated

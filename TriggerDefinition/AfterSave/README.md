@@ -35,15 +35,22 @@ This trigger will be supposed to activate a SQL stored procedure. We specify tha
 
 ## Procedure parameters
 Our procedure have one input parameter. We want to supply it with name of Lead that is being saved. That means specifying:
+
 Name - Name of the parameter in procedure `Name="@LeadFileAs"`
+
 SourceName - Name of column from database, which will be supplied to the parameter `SourceName="FileAs"`
+
 SqlDbType - Type of this parameter `SqlDbType="NVarChar"`
+
 
 ## Conditions
 By action criteria, we can also specify more conditions for the activation. We want to be notified in case of the Lead being saved by the chosen subordinate. We can achieve that with this condition:
 Name - Name of column on the current specified folder containing information we compare against `Name="OwnerGUID"`
+
 Operator - Operator on which we determine if the condition is fulfilled `Operator="Equals"`
+
 Value - Value which we compare against the column value` Value="#SQL SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'user1'"`
+
 
 The condition will thus compare value of "OwnerGUID" on the saved Lead against "Value" we specified. We could specified statically the GUID of User which our subordinate uses. Alternatively, as used here, we can use SQL statement by starting the value with `#SQL` followed by the statement. Here we select GUID of User with certain username (user1).
 
