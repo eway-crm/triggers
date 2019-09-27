@@ -1,5 +1,3 @@
-
-
 # Job trigger example
 "ScheduledAtTime" trigger will activate at a specific time. Lets say you want to run Program.exe each hour, every day.
 
@@ -31,7 +29,7 @@ The trigger will activate Program.exe, so we have to supply programs path to the
 By defining action criterias we can create our own schedule for trigger activation
 
 ### Time
- This criteria defines starting time for the trigger. The time format is h:m:s. The trigger will activate at the set time, relative to 00:00. Here we have this value set to 00:40:00 (40 minutes after midnight). That means, if you set the trigger to "active" at time 00:39, it will activate in the next minute. However if you set it to "active" at 00:41, it will activate after 23 hours and 59 minutes. Take notice, that the time which the trigger checks is time on your server.
+ This criteria defines starting time for the trigger. The time format is h : m : s. The trigger will activate at the set time, relative to 00:00. Here we have this value set to 00:40:00 (40 minutes after midnight). That means, if you set the trigger to "active" at time 00:39, it will activate in the next minute. However if you set it to "active" at 00:41, it will activate after 23 hours and 59 minutes. Take notice, that the time which the trigger checks is time on your server.
 
 ### Repeat
 Repeat determines your trigger will activate repeatedly. Here we have `Value="d"`, which means it will repeat every day. In this case each day at 0:40. This criteria can have following values:

@@ -5,14 +5,16 @@
             <Folder>Leads</Folder>
             <Action Type="StoredProcedure">
                 <StoredProcedures>
-                    <StoredProcedure Name="TriggersExample_SendLeadNotification">
+                    <StoredProcedure Name="eWaySP_NotifyAboutNewDeal">
                         <Parameters>
-                            <StoredProcedureParameter Name="@LeadFileAs" SourceName="FileAs" SqlDbType="NVarChar" />
+                            <StoredProcedureParameter Name="@LeadGUID"    SourceName="ItemGUID" SqlDbType="UniqueIdentifier" />
+                            <StoredProcedureParameter Name="@LeadFileAs"  SourceName="FileAs"   SqlDbType="NVarChar" />
                         </Parameters>
                     </StoredProcedure>
                 </StoredProcedures>
                 <Criterias>
-                  <ActionCriteria Name="OwnerGUID" Operator="Equals" Value="#SQL SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'user1'" />
+                  <ActionCriteria Name="OwnerGUID" Operator="Equals"    Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'user1'" />
+                  <ActionCriteria Name="OwnerGUID" Operator="NotEquals" Value="$CURRENT_USER[ItemGUID]" />
                 </Criterias>
             </Action>
         </TriggerDefinition>
