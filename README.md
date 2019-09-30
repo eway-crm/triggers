@@ -17,6 +17,7 @@ This new file will be empty XML File with only standard `<?xml version="1.0" enc
 ## XSD Definition Schema
 
 We have provided our XSD definition schema for download. If you do so, you can use it in visual studio to validate your trigger XML script. To link it, go to properties f chosen XML file and in "Schemas" choose our XSD file.
+
 ![Properties](Properties.PNG)
 
 Now you can start creating your trigger.
