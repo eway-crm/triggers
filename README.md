@@ -39,7 +39,7 @@ Trigger definition gives the trigger information when should it activate. This c
 <TriggerDefinition Active="" When="">
 </TriggerDefinition>
 ```
-"Active" can be either true or false. That indicates, if the trigger even can be activated. Perhaps you want to have it inactive for some time, but dont want to delete it, you set it to false. You can also fit more than one trigger definitions inside `<Triggers></Triggers>`, resulting in having multiple triggers in one file.
+"Active" can be either true or false. That indicates, if the trigger even can be activated. Perhaps you want to have it inactive for some time, but don't want to delete it, you set it to false. You can also fit more than one trigger definitions inside `<Triggers></Triggers>`, resulting in having multiple triggers in one file.
 
 "When" than defines what is the impulse for triggering. Here is two ways of setting that up:
 
@@ -73,7 +73,7 @@ Action type is what the trigger is "triggering". That could be either executable
 	</StoredProcedures>    
 </Action>
 ```
-Click [here](ActionType/StoredProcedure/README.md) for example
+Click [here](ActionType/StoredProcedure/README.md) for example.
 
 For the procedure to have correct format, please use our SQL snippet with predefined templates. You can find that [here](https://github.com/eway-crm/Snippets).
 
@@ -81,7 +81,7 @@ Writting triggers requires T-SQL knowledge. Checkout our [Database Schema](https
 
 ### Executable
 "Executable" trigger will activate .exe file of your specification.
-Click [here](ActionType/Executable/README.md) for example
+
 ```xml
 <Action Type="Executable">
 	<Executable Target="">
@@ -89,12 +89,13 @@ Click [here](ActionType/Executable/README.md) for example
     
 </Action>
 ```
+Click [here](ActionType/Executable/README.md) for example.
 
 ## Define the triggers specifics
 With type of activating and activation target chosen, you can now focus on detailing the specifics of the trigger. That means procedure parameters for "storedProcedure" trigger and action criteria for both types of trigger.
 
 ### Stored procedure parameter
-When creating trigger which activates stored procedure, we will possibly want to supply the procedure with input parameters. If the procedure doesnt have any, than we are set can leave this be. Otherwise we have to specify value for each input parameter the procedure has.
+When creating trigger which activates stored procedure, we will possibly want to supply the procedure with input parameters. If the procedure doesn't have any, than we are set can leave this be. Otherwise we have to specify value for each input parameter the procedure has.
 
 ```xml
 <Parameters>

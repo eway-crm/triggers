@@ -23,7 +23,7 @@
 In this example we can see that the trigger definition is set to `When="ScheduledAtTime"`. That makes the trigger activate at specified time. The time is specified by action criteria.
 
 ## What will be activated
-The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\Program.exe"`.
+The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\inetpub\wwwroot\Free_com\31994\bin\Program.exe"`.
 
 ## Choosing time
 By defining action criterias we can create our own schedule for trigger activation
