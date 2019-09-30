@@ -4,7 +4,7 @@ This page should give you insight for how triggers work, what you can do with th
 ## Download Visual Studio
 To work with XML Triggers we advise to use Microsoft Visual Studio. You can download free instance [here](https://code.visualstudio.com/?wt.mc_id=vscom_freedevoffers). Click on download and then install the application. Once you have it installed, open the Visual Studio and click on "File" and "New" in context menu and "File.." in the next context menu.
 
-![New file](NewFile.PNG)
+![New file](NewFile.png)
 
 File type selection then appears. Here you have to choose "XML File". While this option is chosen, click on "Open" Button to open the new file.
 
