@@ -21,6 +21,7 @@
 </TriggersConfiguration>
 ```
 In this example we can see that the trigger definition is set to `When="ScheduledAtTime"`. That makes the trigger activate at specified time. The time is specified by action criteria.
+there is also an option to choose, if the trigger will e handled as transaction. This is done by assigning true or false to `WaitForProcessEnd=""`. By setting this to true, the trigger will be handled as transaction. Note that this could present some problems in case of executed program uncaught exceptions or extensive API calls.
 
 ## What will be activated
 The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\inetpub\wwwroot\Free_com\31994\bin\Program.exe"`.
