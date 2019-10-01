@@ -8,17 +8,17 @@ To work with XML Triggers we advise to use Microsoft Visual Studio. You can down
 
 File type selection then appears. Here you have to choose "XML File". While this option is chosen, click on "Open" Button to open the new file.
 
-![Open](Open.PNG)
+![Open](Open.png)
 
 This new file will be empty XML File with only standard `<?xml version="1.0" encoding="utf-8"?>` on the first line. Now you are ready to start writing the trigger.
 
-![Empty file](EmptyFile.PNG)
+![Empty file](EmptyFile.png)
 
 ## XSD Definition Schema
 
 We have provided our XSD definition schema for download. If you do so, you can use it in visual studio to validate your trigger XML script. To link it, go to properties f chosen XML file and in "Schemas" choose our XSD file.
 
-![Properties](Properties.PNG)
+![Properties](Properties.png)
 
 Now you can start creating your trigger.
 
@@ -52,7 +52,7 @@ In this case we additionally have to specify "FolderName". That defines on which
 ```xml
 <Folder></Folder>
 ```
-To ease understanding folder names, look [here](FolderNames.md).
+To ease understanding folder names, look [here](https://github.com/eway-crm/php-lib/blob/master/FolderNames.md).
 
 ### Job
 This definition makes the trigger activate on specific time. That means either just once, or periodically in times of your own choosing.

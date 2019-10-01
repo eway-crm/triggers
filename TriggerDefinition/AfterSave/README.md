@@ -94,4 +94,4 @@ For the procedure to have correct format, please use our SQL snippet with predef
 
 ## Outcome
 This series of actions should in getting this email with a link to the new Deal:
-![email](images/email.PNG)
+![email](Email.PNG)
