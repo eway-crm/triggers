@@ -41,7 +41,7 @@ Trigger definition gives the Trigger information when it should be activated. Th
 ```
 "Active" can be either true or false. That indicates, if the trigger will be executed. Perhaps you want to have it inactive for some time, but don't want to delete it, you set it to false. You can also fit more than one trigger definitions inside `<Triggers></Triggers>`, resulting in having multiple triggers in one file.
 
-"When" than defines what action will activate the Trigger. Item related actions are called **[Triggers](Trigger)** (BeforeSave, AfterSave, ...), time related actions are called **[Jobs](Job)** (ScheduledAtTime).
+"When" than defines what action will activate the Trigger. Item related actions are called **[Triggers](#Trigger)** (BeforeSave, AfterSave, ...), time related actions are called **[Jobs](#Job)** (ScheduledAtTime).
 * BeforeSave
 * AfterSave
 * BeforeRemove
