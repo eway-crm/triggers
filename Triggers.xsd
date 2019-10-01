@@ -369,6 +369,17 @@
                                   </xsd:complexType>
                                 </xsd:element>
                               </xsd:sequence>
+                              <xsd:attribute name="Operator" use="optional" default="AND">
+                                <xsd:annotation>
+                                  <xsd:documentation>Operator used when evaluating multiple criteria. Available in 5.4.3 and later.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="AND" />
+                                    <xsd:enumeration value="OR" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:attribute>
                             </xsd:complexType>
                           </xsd:element>
                         </xsd:sequence>
