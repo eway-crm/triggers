@@ -19,17 +19,17 @@ BEGIN
 	SET XACT_ABORT ON;
 
 	DECLARE @To NVARCHAR(MAX)
-    DECLARE @Body NVARCHAR(MAX)
+	DECLARE @Body NVARCHAR(MAX)
 
-    SET @To = 'jiri.patera@eway-crm.com';
-    SET @Body = 'A new Proposal has been made. You can inspect it <a href="eway://leads/' + cast(@LeadGUID as nvarchar(64)) + '">here</a>.';
+	SET @To = 'jiri.patera@eway-crm.com';
+	SET @Body = 'A new Deal has been created. You can inspect it <a href="eway://Leads/' + CAST(@LeadGUID AS CHAR(36)) + '">here</a>.';
 	SET @LeadFileAs = 'New Deal: ' + @LeadFileAs
 
-    EXECUTE [dbo].[eWaySP_SendMail] @To, @Body, @LeadFileAs
+	EXECUTE [dbo].[eWaySP_SendMail] @To, @Body, @LeadFileAs
 
 END
 GO
 
 EXEC dbo.eWaySP_SetProcedureDescription 'eWaySP_NotifyAboutNewDeal', 'Notify about new deal for triggers examples.'
 EXEC dbo.eWaySP_SetProcedureParameterDescription 'eWaySP_NotifyAboutNewDeal', '@LeadGUID', 'Lead GUID.'
-EXEC dbo.eWaySP_SetProcedureParameterDescription 'eWaySP_NotifyAboutNewDeal', '@LeadFileAs', 'Lead FileAs.'
+EXEC dbo.eWaySP_SetProcedureParameterDescription 'eWaySP_NotifyAboutNewDeal', '@LeadFileAs', 'Lead name.'
