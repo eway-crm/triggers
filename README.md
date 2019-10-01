@@ -1,8 +1,8 @@
-# Work with triggers
-This page should give you insight for how triggers work, what you can do with them and which parameters you can use.
+# Work with Triggers
+This page should give you insight on how triggers work, what you can do with them and which parameters you can use.
 
-## Download Visual Studio
-To work with XML Triggers we advise to use Microsoft Visual Studio. You can download free instance [here](https://code.visualstudio.com/?wt.mc_id=vscom_freedevoffers). Click on download and then install the application. Once you have it installed, open the Visual Studio and click on "File" and "New" in context menu and "File.." in the next context menu.
+## Use good XLM editor with XSD validation
+To work with XML Triggers we advise to use Microsoft Visual Studio. You can download free version [here](https://visualstudio.microsoft.com/downloads/). Click on download and then install the application. Once you have it installed, open Visual Studio and click on "File", "New" and then "File..." in next context menu.
 
 ![New file](NewFile.png)
 
@@ -10,38 +10,43 @@ File type selection then appears. Here you have to choose "XML File". While this
 
 ![Open](Open.png)
 
-This new file will be empty XML File with only standard `<?xml version="1.0" encoding="utf-8"?>` on the first line. Now you are ready to start writing the trigger.
+This new file will be empty XML File with only standard definition `<?xml version="1.0" encoding="utf-8"?>` on the first line.
 
 ![Empty file](EmptyFile.png)
 
-## XSD Definition Schema
+## Download XSD Schema for validation of Triggers
 
-We have provided our XSD definition schema for download. If you do so, you can use it in visual studio to validate your trigger XML script. To link it, go to properties f chosen XML file and in "Schemas" choose our XSD file.
+We have provided our XSD definition schema for [download](https://github.com/eway-crm/triggers/raw/master/Triggers.xsd). If you do so, you can use it in Visual Studio to validate your XML Trigger. To use it, right click into the opened XML file and go to Properties. In "Schemas" specify path to the downloaded XSD file.
 
 ![Properties](Properties.png)
 
-Now you can start creating your trigger.
+Now you can start creating your Trigger.
 
 ## Standard trigger configuration
-Every Trigger should start with this standard configuration:
+Every Trigger should start with a standard specification:
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
 <TriggersConfiguration xmlns="urn:eway:document-schemas:triggers-configuration">
     <Triggers>
     
     </Triggers>
 </TriggersConfiguration>
 ```
-Inside, we can start defining the trigger.
 
 ##  Choose when the trigger will be activated
-Trigger definition gives the trigger information when should it activate. This can be either by action such as delete,save etc. or by specifying time of activation.
+Trigger definition gives the Trigger information when it should be activated. This can be either by action such as delete or save or by specifying time of activation.
 ```xml
 <TriggerDefinition Active="" When="">
 </TriggerDefinition>
 ```
-"Active" can be either true or false. That indicates, if the trigger even can be activated. Perhaps you want to have it inactive for some time, but don't want to delete it, you set it to false. You can also fit more than one trigger definitions inside `<Triggers></Triggers>`, resulting in having multiple triggers in one file.
+"Active" can be either true or false. That indicates, if the trigger will be executed. Perhaps you want to have it inactive for some time, but don't want to delete it, you set it to false. You can also fit more than one trigger definitions inside `<Triggers></Triggers>`, resulting in having multiple triggers in one file.
 
-"When" than defines what is the impulse for triggering. Here is two ways of setting that up:
+"When" than defines what action will activate the Trigger. Item related actions are called **[Triggers](Trigger)** (BeforeSave, AfterSave, ...), time related actions are called **[Jobs](Job)** (ScheduledAtTime).
+* BeforeSave
+* AfterSave
+* BeforeRemove
+* AfterRemove
+* ScheduledAtTime
 
 ### Trigger
 This definition makes the trigger activate on specified item action. Bellow is link to example of "AfterSave" activation. That means the trigger will activate after an item in eWay-CRM is saved.
