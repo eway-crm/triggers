@@ -45,9 +45,15 @@ Our procedure have two input parameters. We want to supply the first one with GU
 ## Conditions
 The first condition ensures that we notify users (owners of new deals) about new deals created by the **api** user. We might also just specify GUID of the **api** user, but in the sample we will show how to use SQL query in the ActionCriteria.
 
-* **Name** - Name of the column (in this case `Name="CreatedByGUID"`)
-* **Operator** - Operator used to determine if the condition is fulfilled `Operator="Equals"`
-* **Value** - Value which we compare against the column value `Value="#SQL SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'api'"`
+ * **Name** - Name of the column (in this case `Name="CreatedByGUID"`)
+ * **Operator** - Operator used to determine if the condition is fulfilled `Operator="Equals"`. It 				can have following values:  
+ **Equals** - Compares and is true if both sides are equal. Also is the default value.
+ **EqualsFolderName** - Compares folder names and is true if both sides are equal.
+ **NotEquals** - Compares and is true if the sides are not equal.
+ **StartsWith** - Is true if the given parameter starts with specified string.
+ **IsChanged** - Is true when the given parameter was changed.
+ 
+ * **Value** - Value which we compare against the column value `Value="#SQL SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'api'"`
 
 The second condition is not really necessary here, but it shows how to use system variables. The condition checks that notification will be send only when the new Owner of Deal differs from the user who created the Deal. We use operator `Operator="NotEquals"` and value `Value="$CURRENT_USER[ItemGUID]"` which is system variable that gives us GUID of current user.
 
