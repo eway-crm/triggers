@@ -115,3 +115,26 @@ In case of [Job](#Job), we define time of the execution.
 	<ActionCriteria Name="" Operator="" Value="" />
 </Criterias>
 ```
+Here is a list of variables that can be used in action criteria:
+
+ - **SourceName**
+ Name of the database column.
+ 
+ - **Name**
+ Name of the input parameter in stored procedure.
+ 
+ - **NeedLoadSource**
+ Boolean indication, if the criteria need a load source.
+ 
+ - **SqlDbType**
+ Type of the variable in stored procedure.
+ 
+ - **Value**
+ Value of the variable.
+ 
+ - **UsePreviousValue**
+ Use variable from the previous criteria.
+ 
+ - **UseCurrentFolder**
+ Use current folder as value.
+
