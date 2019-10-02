@@ -21,7 +21,18 @@
 </TriggersConfiguration>
 ```
 In this example we can see that the trigger definition is set to `When="ScheduledAtTime"`. That makes the trigger activate at specified time. The time is specified by action criteria.
-there is also an option to choose, if the trigger will be handled as transaction. This is done by assigning true or false to `WaitForProcessEnd=""`. By setting this to true, the trigger will be handled as transaction. Note that this could present some problems in case of executed program uncaught exceptions or extensive API calls.
+There is also an option to choose, if the trigger will be handled as transaction. This is done by assigning true or false to `WaitingType=""`.  It can have following values:
+
+ - **WaitInTransaction**
+The executable process will be launched inside the transaction repeater and we will also wait for its ending. The saving/removing routine does not end before the trigger process finishes. If a error occurs, the saving/removing transaction will fail like for example the SQL triggers do.
+
+ - **WaitOutsideTransaction**
+The executable process will be launched inside the transaction repeater and its handle will be saved. Later, after the transaction repeater finishes its work, the saving routine will wait for the process handle to end. If an error occurs, the saving/removing transaction is already committed and the ReturnCode will not be affected. An email will be however sent (like in queued jobs).
+ 
+ - **NoWaiting**
+The executable process will be launched inside the transaction repeater and the handle will not be stored.If an error occurs, the saving/removing transaction is already committed and the ReturnCode will not be affected. No email nor a log message is provided.
+
+When choosing which option to use, note that you could find yourself in a deadlock situation. This can occur when the executable you want to trigger happens to call eWay-CRM API to work within folder name in which is the trigger also operating. For example, your trigger is "afterSave" on "Contacts" folder name and the executable is supposed to save some contact through API. Trigger is already working on "Contacts", prompting the executable to wait for the transaction to end, resulting in a deadlock.
 
 ## What will be activated
 The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\inetpub\wwwroot\Free_com\31994\bin\Program.exe"`.
