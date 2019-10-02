@@ -7,7 +7,7 @@
   <Triggers>
   <TriggerDefinition When="ScheduledAtTime" Active="true">
     <Action Type="Executable">
-      <Executable Target="C:\inetpub\wwwroot\Free_com\31994\bin\Program.exe" WaitForProcessEnd="true">
+      <Executable Target="C:\inetpub\wwwroot\Free_com\31994\bin\Program.exe" WaitingType="WaitInTransaction">
       </Executable>
       <Criterias>
         <ActionCriteria Name="Time" Value="00:40:00"/>
