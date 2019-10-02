@@ -87,7 +87,7 @@ Stored Procedure parameters are defined in the Parameters tag.
 </Parameters>
 ```
 
-Click [here](ActionType/StoredProcedure/README.md) for example.
+Click [here](TriggerDefinition/AfterSave/README.md) for example.
 
 Please use our template to create T-SQL Procedure. You can find it in our [Snippets](https://github.com/eway-crm/Snippets).
 
@@ -102,7 +102,7 @@ Writting triggers requires T-SQL knowledge. Checkout our [Database Schema](https
 	</Executable>
 </Action>
 ```
-Click [here](ActionType/Executable/README.md) for example.
+Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example.
 
 ## Action criteria
 Action criteria specifies conditions that indicates whether the trigger will be activated for the item or not by checking item's value on a specified column.
