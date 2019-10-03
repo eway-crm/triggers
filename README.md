@@ -110,6 +110,14 @@ True to provide previous value to the stored procedure instead of value provided
 * **UseCurrentFolder**
 Provide current folder name as input of the stored procedure.
 
+Here is how you can write a simple parameter with use of static value:
+```xml
+<Parameters>
+    <StoredProcedureParameter Name="@SupervisorUser" Value="Admin" />
+</Parameters>
+```
+Input parameter in Stored Procedure will now be supplied with static value "Admin".
+
 Click [here](TriggerDefinition/AfterSave/README.md) for example.
 
 Please use our template to create T-SQL Procedure. You can find it in our [Snippets](https://github.com/eway-crm/Snippets).
