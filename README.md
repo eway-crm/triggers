@@ -136,10 +136,10 @@ Action criteria specifies conditions that indicates whether the trigger will be 
 For triggers you may use the following attributes:
 * **Name** - Name of the column
 * **Operator** - Operator used to determine if the condition is fulfilled (default Equals)
- * **Equals** - Is true if value of the column is equal to value in Value attribute.
- * **EqualsFolderName** - Compares ObjectTypeID with FolderName provided in Value attribute.
- * **NotEquals** - Is true if value of the column is **not** equal to value in Value attribute.
- * **StartsWith** - Is true if value of the column start with value in the Value attribute.
+  * **Equals** - Is true if value of the column is equal to value in Value attribute.
+  * **EqualsFolderName** - Compares ObjectTypeID with FolderName provided in Value attribute.
+  * **NotEquals** - Is true if value of the column is **not** equal to value in Value attribute.
+  * **StartsWith** - Is true if value of the column start with value in the Value attribute.
 * **IsChanged** - Is true when the value of the column has been changed.
 * **Value** - Value which we compare against the column value. May also contain an SQL expression: `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
 
