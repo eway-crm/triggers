@@ -21,7 +21,9 @@ BEGIN
 	DECLARE @To NVARCHAR(MAX)
 	DECLARE @Body NVARCHAR(MAX)
 
-	SET @To = 'jiri.patera@eway-crm.com';
+	SET @To = (SELECT Email1Address FROM Users u
+			   LEFT JOIN Leads l ON u.ItemGUID = l.OwnerGUID
+			   WHERE l.ItemGUID = @LeadGUID)
 	SET @Body = 'A new Deal has been created. You can inspect it <a href="eway://Leads/' + CAST(@LeadGUID AS CHAR(36)) + '">here</a>.';
 	SET @LeadFileAs = 'New Deal: ' + @LeadFileAs
 

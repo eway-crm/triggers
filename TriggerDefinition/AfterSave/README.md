@@ -1,3 +1,4 @@
+
 # AfterSave Stored Procedure trigger example
 This example will show trigger, which sends email, after Deal is saved. Lets say we want to notify users about new Deal created from a web page using API (the user used by the API is also called api):
 
@@ -58,6 +59,7 @@ CREATE PROCEDURE [dbo].[eWaySP_NotifyAboutNewDeal]
 )
 AS
 BEGIN
+
 	SET NOCOUNT ON;
 
 	SET XACT_ABORT ON;
@@ -65,11 +67,14 @@ BEGIN
 	DECLARE @To NVARCHAR(MAX)
 	DECLARE @Body NVARCHAR(MAX)
 
-	SET @To = 'jiri.patera@eway-crm.com';
+	SET @To = (SELECT Email1Address FROM Users u
+			   LEFT JOIN Leads l ON u.ItemGUID = l.OwnerGUID
+			   WHERE l.ItemGUID = @LeadGUID)
 	SET @Body = 'A new Deal has been created. You can inspect it <a href="eway://Leads/' + CAST(@LeadGUID AS CHAR(36)) + '">here</a>.';
 	SET @LeadFileAs = 'New Deal: ' + @LeadFileAs
 
 	EXECUTE [dbo].[eWaySP_SendMail] @To, @Body, @LeadFileAs
+
 END
 GO
 ```
