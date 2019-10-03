@@ -217,28 +217,28 @@
       <xsd:enumeration value="WaitInTransaction">
         <xsd:annotation>
           <xsd:documentation>
-            The executable process will be launched inside th transaction repeater and we will also wait for its ending.
-            If a error occurs, the saving/removing transaction will fail like for example the SQL triggers do.
-            The saving/removing routine does not end before the trigger process finishes (Agent is blue until the work is done).
+            The executable process will be launched inside the item's saving / removing transaction and we will also wait for it's ending.
+            If an error occurs, the saving / removing transaction will fail like for example the SQL Triggers do.
+            The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
       <xsd:enumeration value="WaitOutsideTransaction">
         <xsd:annotation>
           <xsd:documentation>
-            The executable process will be launched inside th transaction repeater and its handle will be saved.
-            Later, after the transaction repeater finishes its work, the saving routine will wait for the process handle to end.
-            If an error occurs, the saving/removing transaction is already committed and the ReturnCode will not be affected.
-            An email will be however sent (like in queued jobs).
-            The saving/removing routine does not end before the trigger process finishes (Agent is blue until the work is done).
+            The executable process will be launched inside the transaction repeater and the process handle will be saved.
+            Later, after the transaction finishes its work, the saving routine will wait for the process handle to end.
+            If an error occurs, the saving / removing transaction is already committed and the ReturnCode will not be affected.
+            An email will be however sent to the SystemHealthNotification group.
+            The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
       <xsd:enumeration value="NoWaiting">
         <xsd:annotation>
           <xsd:documentation>
-            The executable process will be launched inside th transaction repeater and the handle will not be stored.
-            If an error occurs, the saving/removing transaction is already committed and the ReturnCode will not be affected.
+            The executable process will be launched inside the transaction repeater and the process handle will not be stored.
+            If an error occurs, the saving / removing transaction is already committed and the ReturnCode will not be affected.
             No email nor a log message is provided.
           </xsd:documentation>
         </xsd:annotation>

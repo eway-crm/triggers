@@ -87,6 +87,29 @@ Stored Procedure parameters are defined in the Parameters tag.
 </Parameters>
 ```
 
+Here is a list of attributes that can be used in StoredProcedureParameter:
+
+* **SourceName**
+Name of the database column.
+ 
+* **Name**
+Name of the input parameter of the stored procedure including @.
+ 
+* **NeedLoadSource**
+True to load value from the database instead of using the value provided by the client. Default is False.
+ 
+* **SqlDbType**
+Type of the input parameter of the stored procedure.
+ 
+* **Value**
+Static value provided to the stored procedure instead of the SourceName.
+ 
+* **UsePreviousValue**
+True to provide previous value to the stored procedure instead of value provided by the client.
+ 
+* **UseCurrentFolder**
+Provide current folder name as input of the stored procedure.
+
 Click [here](TriggerDefinition/AfterSave/README.md) for example.
 
 Please use our template to create T-SQL Procedure. You can find it in our [Snippets](https://github.com/eway-crm/Snippets).
@@ -105,7 +128,22 @@ Writting triggers requires T-SQL knowledge. Checkout our [Database Schema](https
 Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example.
 
 ## Action criteria
+
+### Triggers
+
 Action criteria specifies conditions that indicates whether the trigger will be activated for the item or not by checking item's value on a specified column.
+
+For triggers you may use the following attributes:
+* **Name** - Name of the column
+* **Operator** - Operator used to determine if the condition is fulfilled (default Equals)
+ * **Equals** - Is true if value of the column is equal to value in Value attribute.
+ * **EqualsFolderName** - Compares ObjectTypeID with FolderName provided in Value attribute.
+ * **NotEquals** - Is true if value of the column is **not** equal to value in Value attribute.
+ * **StartsWith** - Is true if value of the column start with value in the Value attribute.
+* **IsChanged** - Is true when the value of the column has been changed.
+* **Value** - Value which we compare against the column value. May also contain an SQL expression: `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
+
+### Jobs
 
 In case of [Job](#Job), we define time of the execution.
 
@@ -115,26 +153,3 @@ In case of [Job](#Job), we define time of the execution.
 	<ActionCriteria Name="" Operator="" Value="" />
 </Criterias>
 ```
-Here is a list of variables that can be used in action criteria:
-
- - **SourceName**
- Name of the database column.
- 
- - **Name**
- Name of the input parameter in stored procedure.
- 
- - **NeedLoadSource**
- Boolean indication, if the criteria need a load source.
- 
- - **SqlDbType**
- Type of the variable in stored procedure.
- 
- - **Value**
- Value of the variable.
- 
- - **UsePreviousValue**
- Use variable from the previous criteria.
- 
- - **UseCurrentFolder**
- Use current folder as value.
-
