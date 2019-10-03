@@ -43,32 +43,9 @@ No email nor a log message is provided.
 Note that using WaitInTransaction may cause a deadlock. This may occur when the executable you want to trigger saves data back to the eWay-CRM using eWay-CRM API.
 
 ## What will be activated
-The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\inetpub\wwwroot\Free_com\31994\bin\Program.exe"`.
+The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\inetpub\wwwroot\eWay\bin\Program.exe"`.
 
 ## Choosing time
 By defining action criterias we can create our own schedule for trigger activation.
 
-### Time
-This criteria defines starting time for the trigger. The time format is `h:m:s`. The trigger will activate at the specified time, relative to 00:00. Here we have this value set to 00:40:00 (40 minutes after midnight).
-
-### Repeat
-Repeat determines your trigger will activate repeatedly. Here we have `Value="d"`, which means it will repeat every day. In this case each day at 00:40. This criteria can have following values:
-
-"d" for daily
-
-"wd" for daily but only on work days (Monday till Friday)
-
-"w" for weekly
-
-"m" for monthly
-
-"y" for yearly
-
-
-### Iteration count
-Iteration is number of times that the trigger will activate. Its value is number. In this case the value is 23, so the trigger will activate each day  23 times . 
- 
-### Frequency
-This is time after which the next iteration will start. It value is given in minutes. In this case we set it to 60, so the trigger will activate daily, 23 times after 60 minutes.
-
-Configuration in this example will work this way. Each day at 00:40 and than subsequently after 60 minutes again and again. This cycle will repeat every day and should ensure activating the specified Executable or Stored Procedure each hour.
+In this example the trigger will run each day at 00:40 and than subsequently after 60 minutes again and again. This cycle will repeat every day and should ensure activating the specified Executable or Stored Procedure each hour.

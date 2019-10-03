@@ -51,7 +51,7 @@ Trigger definition gives the Trigger information when it should be activated. Th
 ### Trigger
 This definition makes the trigger activate on specified item action. Bellow is link to example of "AfterSave" action. That means the trigger will activate after an item in eWay-CRM is saved.
 
-Click [here](TriggerDefinition/AfterSave/README.md) for example
+Click [here](TriggerDefinition/AfterSave/README.md) for example.
 
 In this case we additionally have to specify "FolderName". That defines on which item will the action be executed.
 ```xml
@@ -143,13 +143,46 @@ For triggers you may use the following attributes:
 * **IsChanged** - Is true when the value of the column has been changed.
 * **Value** - Value which we compare against the column value. May also contain an SQL expression: `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
 
+```xml
+<Criterias>
+	<ActionCriteria Name="ObjectTypeID1" Value="Tasks" Operator="EqualsFolderName" /><!-- ObjectTypeID1 in Relation is a Task -->
+	<ActionCriteria Name="ItemVersion" Value="1" /><!-- ItemVersion equals 1 -->
+	<ActionCriteria Name="CreatedByGUID" Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'" /><!-- Item is created by user admin -->
+	<ActionCriteria Name="OwnerGUID" Operator="IsChanged"/><!-- Owner of item has changed -->
+</Criterias>
+```
+
+Click [here](TriggerDefinition/AfterSave/README.md) for full example.
+
 ### Jobs
 
-In case of [Job](#Job), we define time of the execution.
+In case of [Job](#Job), we define time of the execution. Only **Name** and **Value** attributes are used. Those special values in **Name** are supported:
+
+#### Time
+This criteria defines starting time for the job. The time format is `h:m:s`. The job will activate at the specified time, relative to 00:00. In the example bellow the value set to 00:40:00 (40 minutes after midnight).
+
+#### Repeat
+Repeat determines that your jobs will activate repeatedly. In the example bellow we have `Value="d"`, which means it will repeat every day. In this case each day at 00:40. This criteria can have following values:
+
+* **d** for daily
+* **wd** for daily but only on work days (Monday till Friday)
+* **w** for weekly
+* **m** for monthly
+* **y** for yearly
+
+#### IterationCount
+IterationCount is number of times that the job will activate. Its value is number. In the case below the value is 23, so the trigger will activate each day 23 times. 
+ 
+#### Frequency
+This is time after which the next iteration will start. It's value is given in minutes. In the case below we set it to 60, so the trigger will activate daily, 23 times after 60 minutes.
 
 ```xml
 <Criterias>
-	<ActionCriteria Name="" Value=""/>
-	<ActionCriteria Name="" Operator="" Value="" />
+	<ActionCriteria Name="Time" Value="00:40:00"/>
+	<ActionCriteria Name="Repeat" Value="d" />
+	<ActionCriteria Name="IterationCount" Value="23"/>
+	<ActionCriteria Name="Frequency" Value="60"/>
 </Criterias>
 ```
+
+Click [here](TriggerDefinition/ScheduledAtTime/README.md) for full example.
