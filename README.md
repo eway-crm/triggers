@@ -79,15 +79,7 @@ Action type specifies whether you want to execute [T-SQL Store Procedure](#Store
 </Action>
 ```
 
-Stored Procedure parameters are defined in the Parameters tag.
-
-```xml
-<Parameters>
-    <StoredProcedureParameter Name="" SourceName="" SqlDbType="" />
-</Parameters>
-```
-
-Here is a list of attributes that can be used in StoredProcedureParameter:
+Stored Procedure parameters are defined in the **Parameters** tag. Here is a list of attributes that can be used in **StoredProcedureParameter**:
 
 * **SourceName**
 Name of the database column.
@@ -110,11 +102,13 @@ True to provide previous value to the stored procedure instead of value provided
 * **UseCurrentFolder**
 Provide current folder name as input of the stored procedure.
 
-Here is how you can write a simple parameter with use of static value:
 ```xml
-<Parameters>
-    <StoredProcedureParameter Name="@SupervisorUser" Value="Admin" />
-</Parameters>
+<StoredProcedure Name="">
+	<Parameters>
+		<StoredProcedureParameter Name="@GrouName" Value="Director" SqlDbType="NVarChar" />
+		<StoredProcedureParameter Name="@LeadGUID" SourceName="ItemGUID" SqlDbType="UniqueIdentifier" />
+	</Parameters>
+</StoredProcedure>
 ```
 Input parameter in Stored Procedure will now be supplied with static value "Admin".
 
@@ -135,11 +129,9 @@ Writting triggers requires T-SQL knowledge. Checkout our [Database Schema](https
 ```
 The executable is specified by path to in an your storage. There is also an option to choose, if the trigger will be handled as transaction. This is done by assigning one of the values listed below in the  `WaitingType=""`  attribute.
 
--   **WaitInTransaction**  The executable process will be launched inside the item's saving / removing transaction and we will also wait for it's ending. If an error occurs, the saving / removing transaction will fail like for example the SQL Triggers do. The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
-    
--   **WaitOutsideTransaction**  The executable process will be launched inside the transaction repeater and the process handle will be saved. Later, after the transaction finishes its work, the saving routine will wait for the process handle to end. If an error occurs, the saving / removing transaction is already committed and the ReturnCode will not be affected. An email will be however sent to the SystemHealthNotification group. The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
-    
--   **NoWaiting**  The executable process will be launched inside the transaction repeater and the process handle will not be stored. If an error occurs, the saving / removing transaction is already committed and the ReturnCode will not be affected. No email nor a log message is provided.
+* **WaitInTransaction**  The executable process will be launched inside the item's saving / removing transaction and we will also wait for it's ending. If an error occurs, the saving / removing transaction will fail like for example the SQL Triggers do. The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
+* **WaitOutsideTransaction**  The executable process will be launched inside the transaction repeater and the process handle will be saved. Later, after the transaction finishes its work, the saving routine will wait for the process handle to end. If an error occurs, the saving / removing transaction is already committed and the ReturnCode will not be affected. An email will be however sent to the SystemHealthNotification group. The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
+* **NoWaiting**  The executable process will be launched inside the transaction repeater and the process handle will not be stored. If an error occurs, the saving / removing transaction is already committed and the ReturnCode will not be affected. No email nor a log message is provided.
     
 
 Note that using WaitInTransaction may cause a deadlock. This may occur when the executable you want to trigger saves data back to the eWay-CRM using eWay-CRM API.
@@ -147,9 +139,12 @@ Note that using WaitInTransaction may cause a deadlock. This may occur when the 
 Parameters for executable are, same as the Stored Procedure parameters, defined in the Parameters tag.
 
 ```xml
-<Parameters>
-    <Parameter SourceName="" SqlDbType="" />
-</Parameters>
+<Executable Target="" WaitingType="">
+	<Parameters>
+		<Parameter Value="Director" SqlDbType="NVarChar" />
+		<Parameter SourceName="ItemGUID" SqlDbType="UniqueIdentifier" />
+	</Parameters>
+</Executable>
 ```
 
 Here is a list of attributes that can be used in Parameter:

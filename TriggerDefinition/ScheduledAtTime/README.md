@@ -22,7 +22,8 @@
 </TriggersConfiguration>
 ```
 In this example we can see that the trigger definition is set to `When="ScheduledAtTime"`. That makes the trigger activate at specified time. The time is specified by action criteria.
-There is also an option to choose, if the trigger will be handled as transaction. In this case, the trigger is supposed to "WaitInTransaction", meaning that The executable process will be launched inside transaction and we will also wait for it's ending. If an error occurs, the saving / removing transaction will fail like for example the SQL Triggers do.
+There is also an option to choose, if the trigger will be handled as transaction. In this case, the trigger is supposed to "WaitInTransaction", meaning that the executable process will
+be launched inside transaction and the transaction will also wait for it's ending. If an error occurs, the saving / removing transaction will fail like for example the SQL Triggers do.
 
 ## What will be activated
 The trigger will activate Program.exe, so we have to supply programs path to the trigger like this  `Target="C:\inetpub\wwwroot\eWay\bin\Program.exe"`.
