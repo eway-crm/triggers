@@ -1,7 +1,7 @@
 # Work with Triggers
 This page should give you insight on how triggers work, what you can do with them and which parameters you can use.
 
-## Use good XLM editor with XSD validation
+## Use good XML editor with XSD validation
 To work with XML Triggers we advise to use Microsoft Visual Studio. You can download free version [here](https://visualstudio.microsoft.com/downloads/). Click on download and then install the application. Once you have it installed, open Visual Studio and click on "File", "New" and then "File..." in next context menu.
 
 ![New file](NewFile.png)
