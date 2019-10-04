@@ -65,7 +65,7 @@ This definition makes the trigger activate at specific time. That means either j
 Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example
 
 ## What action you want to trigger?
-Action type specifies whether you want to execute [T-SQL Store Procedure](#Stored Procedure) or [Executable program](#Executable).
+Action type specifies whether you want to execute [T-SQL Store Procedure](#Stored-Procedure) or [Executable program](#Executable).
 
 ### Stored Procedure
 "StoredProcedure" trigger will activate Stored Procedure of your specification. This procedure must be stored on the eWay-CRM server database. You can fit more than one definition of stored procedure in here, in case you want to activate multiple procedures at once.
@@ -90,7 +90,7 @@ True to load value from the database instead of using the value provided by the 
 * **SqlDbType**
 Type of the input parameter of the stored procedure and the database column as well.
 * **Value**
-Static value provided to the stored procedure instead of the SourceName. This could be a static value, [SQL command](#SQL Queries) , or one of our [system variables](#System Variables).
+Static value provided to the stored procedure instead of the SourceName. This could be a static value, [SQL command](#SQL-Queries) , or one of our [system variables](#System-Variables).
 * **UsePreviousValue**
 True to provide previous value to the stored procedure instead of value provided by the client.
 * **UseCurrentFolder**
@@ -150,7 +150,7 @@ True to load value from the database instead of using the value provided by the 
 * **SqlDbType**
 Type of the input parameter of the executable and the database column as well.
 * **Value**
-Static value provided to the executable instead of the SourceName. This could be a static value, [SQL command](#SQL Queries) , or one of our [system variables](#System Variables).
+Static value provided to the executable instead of the SourceName. This could be a static value, [SQL command](#SQL-Queries) , or one of our [system variables](#System-Variables).
 * **UsePreviousValue**
 True to provide previous value to the executable instead of value provided by the client.
  * **UseCurrentFolder**
@@ -172,7 +172,7 @@ For triggers you may use the following attributes:
   * **NotEquals** - Is true if value of the column is **not** equal to value in Value attribute.
   * **StartsWith** - Is true if value of the column start with value in the Value attribute.
 * **IsChanged** - Is true when the value of the column has been changed.
-* **Value** - Value which we compare against the column value. It can be static value or [system variable](#System Variables). May also contain an [SQL expression](#SQL Queries): `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
+* **Value** - Value which we compare against the column value. It can be static value or [system variable](#System-Variables). May also contain an [SQL expression](#SQL-Queries): `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
 ```xml
 <Criterias>
 	<ActionCriteria Name="ObjectTypeID1" Value="Tasks" Operator="EqualsFolderName" /><!-- ObjectTypeID1 in Relation is a Task -->
