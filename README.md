@@ -65,7 +65,7 @@ This definition makes the trigger activate at specific time. That means either j
 Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example
 
 ## What action you want to trigger?
-Action type specifies whether you want to execute [T-SQL Store Procedure](#Stored Procedure) or [Executable program](#Executable).
+Action type specifies whether you want to execute [T-SQL Store Procedure](#Stored_Procedure) or [Executable program](#Executable).
 
 ### Stored Procedure
 "StoredProcedure" trigger will activate Stored Procedure of your specification. This procedure must be stored on the eWay-CRM server database. You can fit more than one definition of stored procedure in here, in case you want to activate multiple procedures at once.
@@ -83,22 +83,16 @@ Stored Procedure parameters are defined in the **Parameters** tag. Here is a lis
 
 * **SourceName**
 Name of the database column.
- 
 * **Name**
 Name of the input parameter of the stored procedure including @.
- 
 * **NeedLoadSource**
 True to load value from the database instead of using the value provided by the client. Default is False.
- 
 * **SqlDbType**
 Type of the input parameter of the stored procedure and the database column as well.
- 
 * **Value**
-Static value provided to the stored procedure instead of the SourceName.
- 
+Static value provided to the stored procedure instead of the SourceName. This could be a static value, [SQL command](#SQL_Queries) , or one of our [system variables](#System_Variables).
 * **UsePreviousValue**
 True to provide previous value to the stored procedure instead of value provided by the client.
- 
 * **UseCurrentFolder**
 Provide current folder name as input of the stored procedure.
 
@@ -151,20 +145,15 @@ Here is a list of attributes that can be used in Parameter:
 
 * **SourceName**
 Name of the database column.
-
 * **NeedLoadSource**
 True to load value from the database instead of using the value provided by the client. Default is False.
-
 * **SqlDbType**
 Type of the input parameter of the executable and the database column as well.
-
 * **Value**
-Static value provided to the executable instead of the SourceName.
-
+Static value provided to the executable instead of the SourceName. This could be a static value, [SQL command](#SQL_Queries) , or one of our [system variables](#System_Variables).
 * **UsePreviousValue**
 True to provide previous value to the executable instead of value provided by the client.
- 
-* **UseCurrentFolder**
+ * **UseCurrentFolder**
 Provide current folder name as input of the executable.
 
 Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example.
@@ -183,14 +172,14 @@ For triggers you may use the following attributes:
   * **NotEquals** - Is true if value of the column is **not** equal to value in Value attribute.
   * **StartsWith** - Is true if value of the column start with value in the Value attribute.
 * **IsChanged** - Is true when the value of the column has been changed.
-* **Value** - Value which we compare against the column value. May also contain an SQL expression: `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
-
+* **Value** - Value which we compare against the column value. It can be static value or [system variable](#System_Variables). May also contain an [SQL expression](#SQL_Queries): `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
 ```xml
 <Criterias>
 	<ActionCriteria Name="ObjectTypeID1" Value="Tasks" Operator="EqualsFolderName" /><!-- ObjectTypeID1 in Relation is a Task -->
 	<ActionCriteria Name="ItemVersion" Value="1" /><!-- ItemVersion equals 1 -->
 	<ActionCriteria Name="CreatedByGUID" Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'" /><!-- Item is created by user admin -->
 	<ActionCriteria Name="OwnerGUID" Operator="IsChanged"/><!-- Owner of item has changed -->
+	<ActionCriteria Name="OwnerGUID" Operator="NotEquals" Value="$CURRENT_USER[ItemGUID]"/><!-- Owner of the item is not current user -->
 </Criterias>
 ```
 
@@ -228,3 +217,22 @@ This is time after which the next iteration will start. It's value is given in m
 ```
 
 Click [here](TriggerDefinition/ScheduledAtTime/README.md) for full example.
+
+## SQL Queries and System Variables
+When defining Stored Procedure parameter, Executable parameter or Action Criteria we can use SQL Queries or System Variables as value.
+
+### SQL Queries
+There is an option to run SQL queries to take something from database as value. To initiate it, write this: `Value="SQL#"`. After # starts the query. Checkout our Database Schema to orient yourself in the format used in these queries. 
+
+### System Variables
+Another option to choose value is to fill it with system variable. These refer to identifiers of a few items linked to current operation. Here is a list of them:
+* **CURRENT_ITEM** - This gets you database record of the item the trigger is currently working on.
+* **CURRENT_USER** - This gets you database record of the user that is currently logged in eWay-CRM.
+* **CURRENT_ITEM_OWNER** - This gets you database record of the user owning the item the trigger is currently working on.
+
+To get to the actual value we have to specify column in bracket behind the variable. Here is an example:
+```xml
+<Criterias>
+	<ActionCriteria Name="$CURRENT_ITEM_OWNER[ItemGUID]" Operator="NotEquals" Value="$CURRENT_USER[ItemGUID]"/><!-- Curent user is not owner of the current item -->
+<Criterias/>
+```
