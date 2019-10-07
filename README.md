@@ -90,7 +90,7 @@ True to load value from the database instead of using the value provided by the 
 * **SqlDbType**
 Type of the input parameter of the stored procedure and the database column as well.
 * **Value**
-Static value provided to the stored procedure instead of the SourceName. This could be a static value, [SQL command](#SQL-Queries) , or one of our [system variables](#System-Variables).
+Static value provided to the stored procedure instead of the SourceName. This can be a static value, [SQL command](#SQL-Queries) or one of our [system variables](#System-Variables).
 * **UsePreviousValue**
 True to provide previous value to the stored procedure instead of value provided by the client.
 * **UseCurrentFolder**
@@ -150,7 +150,7 @@ True to load value from the database instead of using the value provided by the 
 * **SqlDbType**
 Type of the input parameter of the executable and the database column as well.
 * **Value**
-Static value provided to the executable instead of the SourceName. This could be a static value, [SQL command](#SQL-Queries) , or one of our [system variables](#System-Variables).
+Static value provided to the executable instead of the SourceName. This can be a static value, [SQL command](#SQL-Queries) or one of our [system variables](#System-Variables).
 * **UsePreviousValue**
 True to provide previous value to the executable instead of value provided by the client.
  * **UseCurrentFolder**
@@ -222,10 +222,10 @@ Click [here](TriggerDefinition/ScheduledAtTime/README.md) for full example.
 When defining Stored Procedure parameter, Executable parameter or Action Criteria we can use SQL Queries or System Variables as value.
 
 ### SQL Queries
-There is an option to run SQL queries to take something from database as value. To initiate it, write this: `Value="SQL#"`. After # starts the query. Checkout our Database Schema to orient yourself in the format used in these queries. 
+There is an option to run SQL queries to take something from database as value. To initiate it, write this: `Value="SQL#"`. SQL query is placed after # character. Checkout our [Database Schema](https://dev.eway-crm.com/docs/database-schema.html) to orient yourself in the format used in these queries. 
 
 ### System Variables
-Another option to choose value is to fill it with system variable. These refer to identifiers of a few items linked to current operation. Here is a list of them:
+You may also use our System Variables to use in-memory data:
 * **CURRENT_ITEM** - This gets you database record of the item the trigger is currently working on.
 * **CURRENT_USER** - This gets you database record of the user that is currently logged in eWay-CRM.
 * **CURRENT_ITEM_OWNER** - This gets you database record of the user owning the item the trigger is currently working on.
