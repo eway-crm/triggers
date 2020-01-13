@@ -218,7 +218,7 @@ This is time after which the next iteration will start. It's value is given in m
 
 Click [here](TriggerDefinition/ScheduledAtTime/README.md) for full example.
 
-## SQL Queries and System Variables
+## SQL Queries, System Variables and Client Type
 When defining Stored Procedure parameter, Executable parameter or Action Criteria we can use SQL Queries or System Variables as value.
 
 ### SQL Queries
@@ -234,5 +234,23 @@ To get to the actual value we have to specify column in bracket behind the varia
 ```xml
 <Criterias>
 	<ActionCriteria Name="$CURRENT_ITEM_OWNER[ItemGUID]" Operator="NotEquals" Value="$CURRENT_USER[ItemGUID]"/><!-- Curent user is not owner of the current item -->
+<Criterias/>
+```
+
+### Client Type
+Client Type identifies client from which was the trigger run from. There is an expanding list already known clients and any other unknown client is labeled "other". Here are yet recognised clients:
+* **OutlookClient** - eWay-CRM Outlook Client.
+* **WebAccess** - eWay-CRM Web Access.
+* **WebService** -  eWay-CRM Web Service.
+* **AdministrationApplication** - The administration application.
+* **PHPClient** - The PHP client.
+* **UnitTests** - The unit tests.
+* **MobileClient** - The eWay-CRM smartphone application.
+* **Other** - Some other application.
+
+Operators that can be used with client types are **Equals** and **NotEquals**. Here is an example how to use Client Type to restrict trigger only for known types of clients:
+```xml
+<Criterias>
+	<ActionCriteria Name="$ClientType" Value="Other" Operator="NotEquals"/>
 <Criterias/>
 ```
