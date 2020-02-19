@@ -234,6 +234,17 @@
           </xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="WaitOutsideTransactionAndFailOnError">
+        <xsd:annotation>
+          <xsd:documentation>
+            The executable process will be launched inside the transaction repeater and the process handle will be saved.
+            Later, after the transaction finishes its work, the saving routine will wait for the process handle to end.
+            If an error occurs, the saving / removing transaction is already committed, but error ReturnCode will be returned.
+            The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
+            Available in 6.0.1 and later.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
       <xsd:enumeration value="NoWaiting">
         <xsd:annotation>
           <xsd:documentation>
