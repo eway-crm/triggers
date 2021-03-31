@@ -289,7 +289,7 @@
                               <xsd:sequence minOccurs="0">
                                 <xsd:element name="Parameters">
                                   <xsd:complexType>
-                                    <xsd:sequence>
+                                    <xsd:choice maxOccurs="unbounded">
                                       <xsd:element minOccurs="0" maxOccurs="1" name="AccessToken">
                                         <xsd:complexType>
                                           <xsd:attribute name="ApiUser" type="xsd:string" use="required" />
@@ -305,7 +305,7 @@
                                           <xsd:attribute name="UseCurrentFolder" type="xsd:boolean" use="optional" />
                                         </xsd:complexType>
                                       </xsd:element>
-                                    </xsd:sequence>
+                                    </xsd:choice>
                                   </xsd:complexType>
                                 </xsd:element>
                               </xsd:sequence>
