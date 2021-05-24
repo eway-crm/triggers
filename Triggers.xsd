@@ -61,8 +61,8 @@
       <xsd:enumeration value="ProjectList" />
       <xsd:enumeration value="Projects" />
       <xsd:enumeration value="ProjectUsersInCaPlan" />
-      <xsd:enumeration value="RelationData" />
       <xsd:enumeration value="Relations" />
+      <xsd:enumeration value="UnifiedRelations" />
       <xsd:enumeration value="Releases" />
       <xsd:enumeration value="Reports" />
       <xsd:enumeration value="Responses" />
