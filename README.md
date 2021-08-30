@@ -180,6 +180,7 @@ For triggers you may use the following attributes:
 	<ActionCriteria Name="CreatedByGUID" Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'" /><!-- Item is created by user admin -->
 	<ActionCriteria Name="OwnerGUID" Operator="IsChanged"/><!-- Owner of item has changed -->
 	<ActionCriteria Name="OwnerGUID" Operator="NotEquals" Value="$CURRENT_USER[ItemGUID]"/><!-- Owner of the item is not current user -->
+	<ActionCriteria Name="Default" Operator="Equals" Value="True" /><!-- For BIT columns the values are True / False (case sensitive) -->
 </Criterias>
 ```
 
