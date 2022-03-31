@@ -415,6 +415,11 @@
                       <xsd:documentation>When a value of GlobalSetting specified in this attribute is 1 the trigger will execute.</xsd:documentation>
                     </xsd:annotation>
                   </xsd:attribute>
+                  <xsd:attribute name="EnableByFunctionality" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                      <xsd:documentation>If the funcitonality is available in the license key, the trigger will execute.</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:attribute>
                   <xsd:attribute name="DisableByGlobalSettingName" type="xsd:string" use="optional">
                     <xsd:annotation>
                       <xsd:documentation>When a value of GlobalSetting specified in this attribute is 1 the trigger will not execute. This attribute is available from version 5.3.</xsd:documentation>
