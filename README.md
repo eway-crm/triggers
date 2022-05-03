@@ -202,6 +202,19 @@ Repeat determines that your jobs will activate repeatedly. In the example bellow
 * **m** for monthly
 * **y** for yearly
 
+#### DayOfYear
+Used by **yearly** jobs. Defines day and month of the year in which the jobs should be executed.
+
+```xml
+<Criterias>
+	<ActionCriteria Name="Time" Value="01:00:00"/>
+	<ActionCriteria Name="Repeat" Value="y"/>
+	<!-- Date format should be d/M -->
+	<ActionCriteria Name="DayOfYear" Value="1/1"/>
+</Criterias>
+</Action>
+```
+
 #### IterationCount
 IterationCount is number of times that the job will activate. Its value is number. In the case below the value is 23, so the trigger will activate each day 23 times. 
  
