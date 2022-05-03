@@ -212,7 +212,6 @@ Used by **yearly** jobs. Defines day and month of the year in which the jobs sho
 	<!-- Date format should be d/M -->
 	<ActionCriteria Name="DayOfYear" Value="1/1"/>
 </Criterias>
-</Action>
 ```
 
 #### IterationCount
