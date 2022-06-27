@@ -77,6 +77,7 @@
       <xsd:enumeration value="Updates" />
       <xsd:enumeration value="Users" />
       <xsd:enumeration value="UserSettings" />
+      <xsd:enumeration value="UserLicensingBundles" />
       <xsd:enumeration value="Vacation" />
       <xsd:enumeration value="WebAccess2Options" />
       <xsd:enumeration value="WebAccessOptions" />
