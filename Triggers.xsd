@@ -379,6 +379,7 @@
                                           <xsd:enumeration value="EqualsFolderName" />
                                           <xsd:enumeration value="NotEquals" />
                                           <xsd:enumeration value="StartsWith" />
+                                          <xsd:enumeration value="EndsWith" />
                                           <xsd:enumeration value="IsChanged" />
                                         </xsd:restriction>
                                       </xsd:simpleType>
