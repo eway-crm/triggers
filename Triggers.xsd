@@ -28,6 +28,7 @@
       <xsd:enumeration value="Features" />
       <xsd:enumeration value="Flows" />
       <xsd:enumeration value="GlobalSettings" />
+      <xsd:enumeration value="Goals" />
       <xsd:enumeration value="Goods" />
       <xsd:enumeration value="GoodsInCart" />
       <xsd:enumeration value="GoodsInSet" />
@@ -53,7 +54,7 @@
       <xsd:enumeration value="ObjectTypesOptions" />
       <xsd:enumeration value="Payments" />
       <xsd:enumeration value="Prices" />
-      <xsd:enumeration value="PriceListGroup" />
+      <xsd:enumeration value="PriceListGroups" />
       <xsd:enumeration value="ProjectAssignments" />
       <xsd:enumeration value="ProjectAssignmentsPerUserProject" />
       <xsd:enumeration value="ProjectAssignmentsTotal" />
