@@ -360,6 +360,11 @@
                                       </xsd:element>
                                     </xsd:sequence>
                                     <xsd:attribute name="Name" type="storedProcedureName" use="required" />
+                                    <xsd:attribute name="QueueOnly" type="xsd:boolean" use="optional">
+                                      <xsd:annotation>
+                                        <xsd:documentation>True to execute stored procedure using Timer. This attribute is available from version 7.6.</xsd:documentation>
+                                      </xsd:annotation>
+                                    </xsd:attribute>
                                     <xsd:attribute name="CommandTimeout" type="xsd:int" use="optional" />
                                   </xsd:complexType>
                                 </xsd:element>
