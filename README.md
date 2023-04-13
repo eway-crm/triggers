@@ -119,11 +119,11 @@ We have redefined execution limits for StoredProcedure triggers. For Jobs the de
 You can change the limit using CommandTimeout attribute. CommandTimeout is in seconds, however it is not recommended to make the timeouts too big. Triggers are executed in
 transaction, they block the user interface in case of eWay-CRM Online.
 
-Normally triggers take only a few miliseconds to execute. In case of email notifications it may take more time, since the notification is send synchronously.
-It is not recommended to send email notifications synchronously in trigger, because if the transaction is rollbacked the notification might be already send, which may
-cause multiple notifications being send.
+Normally triggers take only a few milliseconds to execute. In the case of email notifications, it may take more time, since the notification is send synchronously.
+It is not recommended to send email notifications synchronously in trigger, because if the transaction is rollbacked the notification might be already sent, which may
+cause multiple notifications to be send.
 
-You can use the new flag QueueOnly, which cause that the procedure is executed later using Timer. There is limit for 9 parameters.
+You can use the new flag QueueOnly, which means that the procedure is executed later using Timer. There is a limit for 9 parameters.
 If you have more parameters you can execute the trigger normally and just manually add the execution of **eWaySP_SendMail** procedure into the queue:
 
 ```xml
