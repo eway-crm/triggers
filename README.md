@@ -72,7 +72,7 @@ Action type specifies whether you want to execute [T-SQL Store Procedure](#Store
 ```xml
 <Action Type="StoredProcedure">
 	<StoredProcedures>
-		<StoredProcedure Name="">
+		<StoredProcedure Name="" CommandTimeout="" QueueOnly="1">
 
 		</StoredProcedure>
 	</StoredProcedures> 
@@ -111,6 +111,24 @@ Click [here](TriggerDefinition/AfterSave/README.md) for example.
 Please use our template to create T-SQL Procedure. You can find it in our [Snippets](https://github.com/eway-crm/Snippets).
 
 Writting triggers requires T-SQL knowledge. Checkout our [Database Schema](https://dev.eway-crm.com/docs/database-schema.html) to find description of standard system Procedures and Functions that can be used right away.
+
+#### :bangbang: Breaking changes in 7.6
+
+We have redefined execution limits for StoredProcedure triggers. For Jobs the default limit is **15 minutes**, for triggers it is only **1 second**.
+
+You can change the limit using CommandTimeout attribute. CommandTimeout is in seconds, however it is not recommended to make the timeouts too big. Triggers are executed in
+transaction, they block the user interface in case of eWay-CRM Online.
+
+Normally triggers take only a few miliseconds to execute. In case of email notifications it may take more time, since the notification is send synchronously.
+It is not recommended to send email notifications synchronously in trigger, because if the transaction is rollbacked the notification might be already send, which may
+cause multiple notifications being send.
+
+You can use the new flag QueueOnly, which cause that the procedure is executed later using Timer. There is limit for 9 parameters.
+If you have more parameters you can execute the trigger normally and just manually add the execution of **eWaySP_SendMail** procedure into the queue:
+
+```xml
+EXEC dbo.eWaySP_AddProcedureIntoJobQueueWithNamedParameters 'eWaySP_SendMail', '@to', @EmailTo, '@subj', @EmailSubject, '@replyTo', @EmailFrom, @TextParameter1Name = '@text', @TextParameter1Value = @EmailBody
+```
 
 ### Executable
 "Executable" trigger will activate .exe file of your specification.
