@@ -171,7 +171,7 @@ For triggers you may use the following attributes:
   * **EqualsFolderName** - Compares ObjectTypeID with FolderName provided in Value attribute.
   * **NotEquals** - Is true if value of the column is **not** equal to value in Value attribute.
   * **StartsWith** - Is true if value of the column start with value in the Value attribute.
-* **IsChanged** - Is true when the value of the column has been changed.
+* **IsChanged** - Is true when the value of the column has been changed. For new items IsChanged is true when there is some value in the column.
 * **Value** - Value which we compare against the column value. It can be static value or [system variable](#System-Variables). May also contain an [SQL expression](#SQL-Queries): `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
 ```xml
 <Criterias>
