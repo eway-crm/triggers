@@ -123,7 +123,7 @@ Normally triggers take only a few milliseconds to execute. In the case of email 
 It is not recommended to send email notifications synchronously in trigger, because if the transaction is rollbacked the notification might be already sent, which may
 cause multiple notifications to be send.
 
-You can use the new flag QueueOnly, which means that the procedure is executed later using Timer. There is a limit for 9 parameters.
+You can use the new flag QueueOnly, which means that the procedure is executed later using Timer. There is a limit for 15 (+5 NVARCHAR) parameters.
 If you have more parameters you can execute the trigger normally and just manually add the execution of **eWaySP_SendMail** procedure into the queue:
 
 ```xml
