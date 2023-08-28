@@ -365,7 +365,11 @@
                                         <xsd:documentation>True to execute stored procedure using Timer. This attribute is available from version 7.6.</xsd:documentation>
                                       </xsd:annotation>
                                     </xsd:attribute>
-                                    <xsd:attribute name="CommandTimeout" type="xsd:int" use="optional" />
+                                    <xsd:attribute name="CommandTimeout" type="xsd:int" use="optional">
+                                      <xsd:annotation>
+                                        <xsd:documentation>CommandTimeout in seconds. It is not recommended to make the timeouts too big. Triggers are executed in transaction, they block the user interface in case of eWay-CRM Online.</xsd:documentation>
+                                      </xsd:annotation>
+                                    </xsd:attribute>
                                   </xsd:complexType>
                                 </xsd:element>
                               </xsd:sequence>
