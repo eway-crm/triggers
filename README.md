@@ -220,6 +220,26 @@ Repeat determines that your jobs will activate repeatedly. In the example bellow
 * **m** for monthly
 * **y** for yearly
 
+#### DayOfWeek
+Used by **weekly** jobs. Defines day of week in which the job should be executed.
+
+Possible values are:
+* **Sunday**
+* **Monday**
+* **Tuesday**
+* **Wednesday**
+* **Thursday**
+* **Friday**
+* **Saturday**
+
+```xml
+<Criterias>
+	<ActionCriteria Name="Time" Value="01:00:00"/>
+	<ActionCriteria Name="Repeat" Value="w"/>
+	<ActionCriteria Name="DayOfWeek" Value="Monday"/>
+</Criterias>
+```
+
 #### DayOfMonth
 Used by **monthly** jobs. Defines day of month in which the job should be executed.
 
