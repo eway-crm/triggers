@@ -6,6 +6,9 @@
 
 ItemVersion column in EWD_ItemChanges became required.
 
+When there are records with NULL in EWD_ItemChanges table during upgrade, procedure **eWaySP_TruncateItemChanges** is called
+and all records in EWD_ItemChanges table are deleted. ChangeID is reset and starts with 1.
+
 Starting with version 8.1 you may notice the following error in your triggers:
 
 ```
