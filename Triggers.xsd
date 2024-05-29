@@ -136,6 +136,16 @@
           <xsd:documentation>Triggered after item is saved.</xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="AfterInsert">
+        <xsd:annotation>
+          <xsd:documentation>Triggered after item is created.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="AfterUpdate">
+        <xsd:annotation>
+          <xsd:documentation>Triggered after item is updated.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
       <xsd:enumeration value="BeforeRemove">
         <xsd:annotation>
           <xsd:documentation>Triggered before item is removed.</xsd:documentation>

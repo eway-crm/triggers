@@ -46,6 +46,8 @@ Trigger definition gives the Trigger information when it should be activated. Th
 "When" than defines what action will activate the Trigger. Item related actions are called **[Triggers](#Trigger)** (BeforeSave, AfterSave, ...), time related actions are called **[Jobs](#Job)** (ScheduledAtTime).
 * BeforeSave
 * AfterSave
+* AfterInsert (v8.3+)
+* AfterUpdate (v8.3+)
 * BeforeRemove
 * AfterRemove
 * ScheduledAtTime
