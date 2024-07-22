@@ -13,6 +13,7 @@ This example will show trigger, which sends email, after Deal is saved. Lets say
                         <Parameters>
                             <StoredProcedureParameter Name="@LeadGUID" SourceName="ItemGUID" SqlDbType="UniqueIdentifier" />
                             <StoredProcedureParameter Name="@LeadFileAs" SourceName="FileAs" SqlDbType="NVarChar" />
+                            <StoredProcedureParameter Name="@LeadOwnerGUID" SourceName="OwnerGUID" SqlDbType="UniqueIdentifier" />
                         </Parameters>
                     </StoredProcedure>
                 </StoredProcedures>

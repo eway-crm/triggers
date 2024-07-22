@@ -108,7 +108,7 @@ Provide current folder name as input of the stored procedure.
 	</Parameters>
 </StoredProcedure>
 ```
-Input parameter in Stored Procedure will now be supplied with static value "Admin".
+Input parameter in Stored Procedure will now be supplied with static value `Director`.
 
 Click [here](TriggerDefinition/AfterSave/README.md) for example.
 
