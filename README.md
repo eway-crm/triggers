@@ -119,11 +119,11 @@ Writting triggers requires T-SQL knowledge. Checkout our [Database Schema](https
 
 > [!CAUTION]
 > Breaking changes in 7.6
+> We have redefined execution limits for StoredProcedure triggers. For Jobs the default limit is **15 minutes**, for triggers it is only **1 second**.
 
-We have redefined execution limits for StoredProcedure triggers. For Jobs the default limit is **15 minutes**, for triggers it is only **1 second**.
-
-You can change the limit using CommandTimeout attribute. CommandTimeout is in seconds, however it is not recommended to make the timeouts too big. Triggers are executed in
-transaction, they block the user interface in case of eWay-CRM Online.
+> [!NOTE]
+> You can change the limit using CommandTimeout attribute. CommandTimeout is in seconds, however it is not recommended to make the timeouts too big. Triggers are executed in
+> transaction, they block the user interface in case of eWay-CRM Online.
 
 Normally triggers take only a few milliseconds to execute. In the case of email notifications, it may take more time, since the notification is send synchronously.
 It is not recommended to send email notifications synchronously in trigger, because if the transaction is rollbacked the notification might be already sent, which may
