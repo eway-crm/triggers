@@ -1,7 +1,8 @@
 # Work with Triggers
 This page should give you insight on how triggers work, what you can do with them and which parameters you can use.
 
-:bangbang: Before updating eWay-CRM make sure to read about [Breaking Changes](Breaking%20Changes.md).
+> [!CAUTION]
+> Before updating eWay-CRM make sure to read about [Breaking Changes](Breaking%20Changes.md).
 
 ## Use good XML editor with XSD validation
 To work with XML Triggers we advise to use Microsoft Visual Studio. You can download free version [here](https://visualstudio.microsoft.com/downloads/). Click on download and then install the application. Once you have it installed, open Visual Studio and click on "File", "New" and then "File..." in next context menu.
@@ -142,9 +143,8 @@ EXEC dbo.eWaySP_AddProcedureIntoJobQueueWithNamedParameters 'eWaySP_SendMail', '
 
 > [!NOTE]
 > The trigger should wrap all unhandled exceptions to InvalidOperationException, otherwise `System.Security.Permissions.SecurityPermission` may also be triggered.
-> `throw new InvalidOperationException(ex.Message);`
-> You may also use `USER_FRIENDLY_ERROR::` prefix if you want to display the message to user.
-> `throw new InvalidOperationException("USER_FRIENDLY_ERROR::Email format is not correct");`
+> You should catch all Exceptions, log them and call `throw new InvalidOperationException(ex.Message);`.
+> You may also use `USER_FRIENDLY_ERROR::` prefix if you want to display the message to user: `throw new InvalidOperationException("USER_FRIENDLY_ERROR::Email format is not correct");`
 
 ```xml
 <Action Type="Executable">
