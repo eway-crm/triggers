@@ -117,7 +117,8 @@ Please use our template to create T-SQL Procedure. You can find it in our [Snipp
 
 Writting triggers requires T-SQL knowledge. Checkout our [Database Schema](https://dev.eway-crm.com/docs/database-schema.html) to find description of standard system Procedures and Functions that can be used right away.
 
-#### :bangbang: Breaking changes in 7.6
+> [!CAUTION]
+> Breaking changes in 7.6
 
 We have redefined execution limits for StoredProcedure triggers. For Jobs the default limit is **15 minutes**, for triggers it is only **1 second**.
 
