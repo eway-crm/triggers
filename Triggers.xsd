@@ -401,6 +401,21 @@
                                           <xsd:enumeration value="StartsWith" />
                                           <xsd:enumeration value="EndsWith" />
                                           <xsd:enumeration value="IsChanged" />
+                                          <xsd:enumeration value="NotEqualsFolderName">
+                                            <xsd:annotation>
+                                              <xsd:documentation>This enumeration value is available since version 8.4.</xsd:documentation>
+                                            </xsd:annotation>
+                                          </xsd:enumeration>
+                                          <xsd:enumeration value="NotStartsWith">
+                                            <xsd:annotation>
+                                              <xsd:documentation>This enumeration value is available since version 8.4.</xsd:documentation>
+                                            </xsd:annotation>
+                                          </xsd:enumeration>
+                                          <xsd:enumeration value="NotEndsWith">
+                                            <xsd:annotation>
+                                              <xsd:documentation>This enumeration value is available since version 8.4.</xsd:documentation>
+                                            </xsd:annotation>
+                                          </xsd:enumeration>
                                         </xsd:restriction>
                                       </xsd:simpleType>
                                     </xsd:attribute>
