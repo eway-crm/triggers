@@ -137,7 +137,7 @@ EXEC dbo.eWaySP_AddProcedureIntoJobQueueWithNamedParameters 'eWaySP_SendMail', '
 ```
 
 ### Executable
-"Executable" trigger will activate .NET Assembly (.exe file) of your specification.
+"Executable" trigger will activate .NET Assembly (.exe file) of your specification. See [SampleExecutableTrigger](https://github.com/eway-crm/SampleExecutableTrigger) for more details about implementation.
 
 > [!CAUTION]
 > Starting with eWay-CRM 8.0 code is executed in restricted environment. Use [SandboxRunner](https://github.com/eway-crm/SandboxRunner) to test your code will be able to run!
