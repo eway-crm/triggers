@@ -19,6 +19,7 @@ When saving single item make sure to call **eWaySP_InsertIntoItemChanges** proce
 
 When saving multiple items use our [Update multiple items snippet](https://github.com/eway-crm/Snippets).
 
-### RTFBody
+### RTFBody / TeamTask
 
 We have removed columns RTFBody from EWD_Tasks and EWD_Calendar tables as they have not been used for long time.
+Also TeamTask column was removed from EWD_Tasks table.
