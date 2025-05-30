@@ -207,7 +207,7 @@ For triggers you may use the following attributes:
 * **Value** - Value which we compare against the column value. It can be static value or [system variable](#System-Variables). May also contain an [SQL expression](#SQL-Queries): `Value="SQL#SELECT U.[ItemGUID] FROM [Users] U WHERE U.[UserName] = 'admin'"`
 
 > [!NOTE]
-> To check whether a value is null or empty string use **Equals** / **NotEquals** operator in combination with `Value=""`.
+> To check whether a value is null or empty string use **Equals** / **NotEquals** operator in combination with `Value=""`. GUIDs in Value must be lower case (eg. `Value="a3eb1137-1067-45cd-ba24-71b114ae65c2"`).
 
 ```xml
 <Criterias>
