@@ -141,6 +141,8 @@ EXEC dbo.eWaySP_AddProcedureIntoJobQueueWithNamedParameters 'eWaySP_SendMail', '
 
 > [!CAUTION]
 > Starting with eWay-CRM 8.0 code is executed in restricted environment. Use [SandboxRunner](https://github.com/eway-crm/SandboxRunner) to test your code will be able to run!
+> Executable trigger can basically do only API to API calls. **Everything else is not allowed**.
+> You should keep number of referenced libraries to minimum, because a lot of them will fail on errors like `In order to access security critical code, this assembly must be fully trusted.`.
 
 > [!NOTE]
 > The trigger should wrap all unhandled exceptions to InvalidOperationException, otherwise `System.Security.Permissions.SecurityPermission` may also be triggered.
