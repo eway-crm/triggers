@@ -149,6 +149,10 @@ EXEC dbo.eWaySP_AddProcedureIntoJobQueueWithNamedParameters 'eWaySP_SendMail', '
 > You should catch all Exceptions, log them and call `throw new InvalidOperationException(ex.Message);`.
 > You may also use `USER_FRIENDLY_ERROR::` prefix if you want to display the message to user: `throw new InvalidOperationException("USER_FRIENDLY_ERROR::Email format is not correct");`
 
+#### List of safe / tested assemblies (NuGet packages)
+* eWayCRM.API
+* Newtonsoft.Json
+
 ```xml
 <Action Type="Executable">
 	<Executable Target="" WaitingType="">
