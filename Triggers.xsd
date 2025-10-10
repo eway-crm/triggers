@@ -222,6 +222,11 @@
           <xsd:documentation>Executes the specified exe file with the arguments made from parameters. There parameters work like the sql procedure ones.</xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="Webhook">
+        <xsd:annotation>
+          <xsd:documentation>Triggers call to remote endpoint. Parameters are passed into the request. This action is available from version 9.3.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="executableWaitingType">
@@ -268,6 +273,18 @@
       </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="webhookMethod">
+    <xsd:restriction base="xs:string">
+      <xsd:enumeration value="GET" />
+      <xsd:enumeration value="POST" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="webhookContentType">
+    <xsd:restriction base="xs:string">
+      <xsd:enumeration value="application/x-www-form-urlencoded" />
+      <xsd:enumeration value="application/json" />
+    </xsd:restriction>
+  </xsd:simpleType>
   <xs:simpleType name="storedProcedureName">
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-zA-Z0-9_]+"/>
@@ -276,6 +293,11 @@
   <xs:simpleType name="storedProcedureParameterName">
     <xs:restriction base="xs:string">
       <xs:pattern value="@[a-zA-Z0-9_]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="webhookParameterName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9]+"/>
     </xs:restriction>
   </xs:simpleType>
   <xsd:element name="TriggersConfiguration">
@@ -323,6 +345,60 @@
                               </xsd:sequence>
                               <xsd:attribute name="Target" type="xs:string" use="required" />
                               <xsd:attribute name="WaitingType" type="executableWaitingType" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element minOccurs="0" name="Webhook">
+                            <xsd:complexType mixed="true">
+                              <xsd:sequence minOccurs="0">
+                                <xsd:element name="Parameters">
+                                  <xsd:complexType>
+                                    <xsd:choice maxOccurs="unbounded">
+                                      <xsd:element minOccurs="0" maxOccurs="1" name="WebhookAccessTokenParameter">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="ApiUser" type="xsd:string" use="required" />
+                                          <xsd:attribute name="Name" type="webhookParameterName" use="required" />
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element maxOccurs="unbounded" name="WebhookParameter">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="SourceName" type="xsd:string" use="optional" />
+                                          <xsd:attribute name="Name" type="webhookParameterName" use="required" />
+                                          <xsd:attribute name="NeedLoadSource" type="xsd:boolean" use="optional" />
+                                          <xsd:attribute name="SqlDbType" type="sqlDbType" use="required" />
+                                          <xsd:attribute name="Value" type="xsd:string" use="optional" />
+                                          <xsd:attribute name="UsePreviousValue" type="xsd:boolean" use="optional" />
+                                          <xsd:attribute name="UseCurrentFolder" type="xsd:boolean" use="optional" />
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:choice>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Endpoint" type="xs:string" use="required">
+                                <xsd:annotation>
+                                  <xsd:documentation>URL of the endpoint.</xsd:documentation>
+                                </xsd:annotation>
+                              </xsd:attribute>
+                              <xsd:attribute name="Method" type="webhookMethod" use="required">
+                                <xsd:annotation>
+                                  <xsd:documentation>Request method.</xsd:documentation>
+                                </xsd:annotation>
+                              </xsd:attribute>
+                              <xsd:attribute name="ContentType" type="webhookContentType" use="required">
+                                <xsd:annotation>
+                                  <xsd:documentation>Request content type.</xsd:documentation>
+                                </xsd:annotation>
+                              </xsd:attribute>
+                              <xsd:attribute name="Authorization" type="xs:string" use="optional">
+                                <xsd:annotation>
+                                  <xsd:documentation>Request authorization header.</xsd:documentation>
+                                </xsd:annotation>
+                              </xsd:attribute>
+                              <xsd:attribute name="Timeout" type="xsd:int" use="optional">
+                                <xsd:annotation>
+                                  <xsd:documentation>Request timeout in miliseconds.</xsd:documentation>
+                                </xsd:annotation>
+                              </xsd:attribute>
                             </xsd:complexType>
                           </xsd:element>
                           <xsd:element minOccurs="0" name="Class">
