@@ -70,7 +70,7 @@ This definition makes the trigger activate at specific time. That means either j
 Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example
 
 ## What action you want to trigger?
-Action type specifies whether you want to execute [T-SQL Store Procedure](#Stored-Procedure) or [Executable program](#Executable).
+Action type specifies whether you want to execute [T-SQL Store Procedure](#Stored-Procedure), [Webhook](#Webhook) or [Executable program](#Executable).
 
 ### Stored Procedure
 "StoredProcedure" trigger will activate Stored Procedure of your specification. This procedure must be stored on the eWay-CRM server database. You can fit more than one definition of stored procedure in here, in case you want to activate multiple procedures at once.
@@ -136,6 +136,28 @@ If you have more parameters you can execute the trigger normally and just manual
 EXEC dbo.eWaySP_AddProcedureIntoJobQueueWithNamedParameters 'eWaySP_SendMail', '@to', @EmailTo, '@subj', @EmailSubject, '@replyTo', @EmailFrom, @TextParameter1Name = '@text', @TextParameter1Value = @EmailBody
 ```
 
+### Webhook
+
+> [!NOTE]
+Webhook triggers are available starting with eWay-CRM 9.3.
+
+```xml
+<Action Type="Webhook">
+	<Webhook Endpoint="https://api.example.com" Method="POST" ContentType="application/json" Timeout="150000">
+	</Webhook>
+</Action>
+```
+
+#### Parameters
+
+Parameters are defined in the same way as for [Executable triggers](#Executable). You can use a special parameter to generate a token of a [eWay-CRM API user](https://kb.eway-crm.com/en/faq-1/installation/how-to-create-api-user) to be able to save data back to eWay-CRM from the webhook. The token is valid only for the time of webhook execution.
+
+```xml
+<Parameters>
+	<WebhookAccessTokenParameter Name="token" ApiUser="api" />
+</Parameters>
+```
+
 ### Executable
 "Executable" trigger will activate .NET Assembly (.exe file) of your specification. See [SampleExecutableTrigger](https://github.com/eway-crm/SampleExecutableTrigger) for more details about implementation.
 
@@ -167,6 +189,8 @@ The executable is specified by path to in an your storage. There is also an opti
     
 
 Note that using WaitInTransaction may cause a deadlock. This may occur when the executable you want to trigger saves data back to the eWay-CRM using eWay-CRM API.
+
+#### Parameters
 
 Parameters for executable are, same as the Stored Procedure parameters, defined in the Parameters tag.
 
