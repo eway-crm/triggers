@@ -97,7 +97,7 @@ Type of the input parameter of the stored procedure and the database column as w
 * **Value**
 Static value provided to the stored procedure instead of the SourceName. This can be a static value, [SQL command](#SQL-Queries) or one of our [system variables](#System-Variables).
 * **UsePreviousValue**
-True to provide previous value to the stored procedure instead of value provided by the client.
+True to provide previous value to the stored procedure instead of value provided by the client. Not supported in BeforeRemove and AfterRemove triggers. Both Remove triggers already provide the value as it was before removing the item.
 * **UseCurrentFolder**
 Provide current folder name as input of the stored procedure.
 
@@ -214,7 +214,7 @@ Type of the input parameter of the executable and the database column as well.
 * **Value**
 Static value provided to the executable instead of the SourceName. This can be a static value, [SQL command](#SQL-Queries) or one of our [system variables](#System-Variables).
 * **UsePreviousValue**
-True to provide previous value to the executable instead of value provided by the client.
+True to provide previous value to the executable instead of value provided by the client. Not supported in BeforeRemove and AfterRemove triggers. Both Remove triggers already provide the value as it was before removing the item.
  * **UseCurrentFolder**
 Provide current folder name as input of the executable.
 
