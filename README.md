@@ -177,11 +177,16 @@ Parameters are defined in the same way as for [Executable triggers](#Executable)
 
 ```xml
 <Action Type="Executable">
-	<Executable Target="" WaitingType="">
+	<Executable Target="Apps\MyTrigger\MyTrigger.exe" WaitingType="">
 	</Executable>
 </Action>
 ```
-The executable is specified by path to in an your storage. There is also an option to choose, if the trigger will be handled as transaction. This is done by assigning one of the values listed below in the  `WaitingType=""`  attribute.
+The executable is specified by path to in an your storage. It may be a relative path as shown in the example.
+
+> [!NOTE]
+For Jobs (ScheduledAtTime triggers) the relative path is different `..\Apps\MyTrigger\MyTrigger.exe`.
+
+There is also an option to choose, if the trigger will be handled as transaction. This is done by assigning one of the values listed below in the  `WaitingType=""`  attribute.
 
 * **WaitInTransaction**  The executable process will be launched inside the item's saving / removing transaction and we will also wait for it's ending. If an error occurs, the saving / removing transaction will fail like for example the SQL Triggers do. The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
 * **WaitOutsideTransaction**  The executable process will be launched inside the transaction repeater and the process handle will be saved. Later, after the transaction finishes its work, the saving routine will wait for the process handle to end. If an error occurs, the saving / removing transaction is already committed and the ReturnCode will not be affected. An email will be however sent to the SystemHealthNotification group. The saving / removing routine does not end before the trigger process finishes (eWay-CRM synchronization that caused the operation is waiting for the end).
