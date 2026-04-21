@@ -461,10 +461,13 @@
                               </xsd:sequence>
                             </xsd:complexType>
                           </xsd:element>
-                          <xsd:element minOccurs="0" name="Criterias">
+                          <xsd:element minOccurs="1" maxOccurs="1" name="Criterias">
+                            <xsd:annotation>
+                              <xsd:documentation>Action criterias specify conditions that indicates whether the trigger will be activated for the item or not. You should try to make criteria as specific as possible to avoid unnecessary trigger activations.</xsd:documentation>
+                            </xsd:annotation>
                             <xsd:complexType>
                               <xsd:sequence>
-                                <xsd:element maxOccurs="unbounded" name="ActionCriteria">
+                                <xsd:element minOccurs="0" maxOccurs="unbounded" name="ActionCriteria">
                                   <xsd:complexType>
                                     <xsd:attribute name="Name" type="xsd:string" use="required" />
                                     <xsd:attribute name="Value" type="xsd:string" />

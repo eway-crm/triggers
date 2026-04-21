@@ -231,6 +231,7 @@ Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example.
 ### Triggers
 
 Action criteria specifies conditions that indicates whether the trigger will be activated for the item or not by checking item's value on a specified column.
+You should try to make criteria as specific as possible to avoid unnecessary trigger activations.
 
 For triggers you may use the following attributes:
 * **Name** - Name of the column
