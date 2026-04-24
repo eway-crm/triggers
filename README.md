@@ -228,6 +228,8 @@ Click [here](TriggerDefinition/ScheduledAtTime/README.md) for example.
 
 ## Action criteria
 
+The `<Criterias>` tag can contain an optional `Operator` attribute (e.g., `<Criterias Operator="AND">` or `<Criterias Operator="OR">`). **If the `Operator` attribute is not specified, the default value is `AND`.**
+
 ### Triggers
 
 Action criteria specifies conditions that indicates whether the trigger will be activated for the item or not by checking item's value on a specified column.
