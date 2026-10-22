@@ -130,6 +130,7 @@ It is not recommended to send email notifications synchronously in trigger, beca
 cause multiple notifications to be send.
 
 You can use the new flag QueueOnly, which means that the procedure is executed later using Timer. There is a limit for 15 (+5 NVARCHAR) parameters.
+QueueOnly is used only when executed inside active web request. It is ignored in background tasks (eg. Graph sync).
 If you have more parameters you can execute the trigger normally and just manually add the execution of **eWaySP_SendMail** procedure into the queue:
 
 ```xml
